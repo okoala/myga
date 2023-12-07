@@ -1,0 +1,48 @@
+{
+  "compilerOptions": {
+    "baseUrl": ".",
+    "target": "esnext",
+    "module": "esnext",
+    "jsx": "react-jsx",
+    "types": ["vite/client", "node"],
+    "moduleResolution": "bundler",
+    "skipLibCheck": true,
+    "esModuleInterop": true,
+    "resolveJsonModule": true,
+    "noEmit": true,
+    "experimentalDecorators": true,
+    "emitDecoratorMetadata": true,
+    "sourceMap": true,
+    "downlevelIteration": true,
+    "strict": true,
+    "allowUnreachableCode": false,
+    "useDefineForClassFields": false,
+    "noUnusedLocals": true,
+    "noImplicitAny": false,
+    "allowJs": true,
+    "noFallthroughCasesInSwitch": true,
+    "allowSyntheticDefaultImports": true,
+    "forceConsistentCasingInFileNames": true,
+    "lib": ["dom", "dom.iterable", "esnext"],
+    "typeRoots": ["./src/global.d.ts", "node_modules/@types"],
+    "paths": {
+      "@config": ["src/app.ts"],
+      "@core": ["src/core/index.ts"],
+      "@core/*": ["src/core/*"],
+      "@assets/*": ["src/assets/*"],
+      "@pages/*": ["src/pages/*"],
+      "@plugins/*": ["src/plugins/*"],
+      "@lib/*": ["src/lib/*"],
+      "virtual:reload-on-update-in-background-script": ["src/global.d.ts"],
+      "virtual:reload-on-update-in-view": ["src/global.d.ts"]
+    }
+  },
+  "include": [
+    "src",
+    "@types",
+    "scripts",
+    "vite.config.ts",
+    "node_modules/@types"
+  ],
+  "exclude": ["node_modules"]
+}

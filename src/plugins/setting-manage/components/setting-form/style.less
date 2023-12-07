@@ -1,0 +1,92 @@
+.setting-form-item {
+  margin-top: 24px;
+  border-radius: 8px;
+  padding: 10px;
+  transition: all 1s ease;
+}
+
+.setting-form-title {
+  font-size: 18px;
+  font-weight: 500;
+  margin: 10px 0 8px 0;
+  line-height: 26px;
+  display: flex;
+  align-items: center;
+}
+
+.setting-form-reset {
+  font-size: 12px;
+  font-weight: normal;
+  margin-left: 10px;
+}
+
+.setting-form-subtitle {
+  padding: 8px 0;
+  font-size: 14px;
+  font-weight: 700;
+}
+
+.setting-form-setting {
+  font-size: 12px;
+  font-weight: normal;
+  display: flex;
+  justify-content: space-between;
+  padding: 10px 0;
+
+  &-content {
+    width: 100%;
+    margin-right: 20px;
+  }
+
+  .ant-checkbox-wrapper {
+    font-size: 12px;
+  }
+
+  .ant-select {
+    margin-left: 8px;
+    min-width: 80px;
+  }
+
+  .ant-input-number {
+    margin-left: 8px;
+  }
+}
+
+.setting-form-number {
+  .ant-input {
+    margin-left: 8px;
+    width: 100px;
+  }
+}
+
+.setting-form-string {
+  .ant-input {
+    margin-top: 8px;
+  }
+}
+
+.setting-form-array {
+  .ant-input {
+    margin-top: 8px;
+  }
+}
+
+.setting-form-copy {
+  font-size: 12px;
+  margin-left: 5px;
+  display: flex;
+  flex-wrap: nowrap;
+  align-items: center;
+  cursor: pointer;
+
+  .anticon {
+    display: none;
+    margin-right: 4px;
+  }
+
+  &:hover {
+    .anticon {
+      display: block;
+    }
+  }
+}

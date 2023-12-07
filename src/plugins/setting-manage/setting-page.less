@@ -1,0 +1,93 @@
+body {
+  padding: 0;
+  margin: 0;
+}
+
+.myga-setting-page-commands {
+  margin-top: 10px;
+  width: 720px !important;
+  height: 300px !important;
+}
+
+.myga-setting-page-wrapper {
+  height: 100vh;
+  width: 100vw;
+}
+
+.myga-setting-main-title {
+  font-size: 20px;
+  line-height: 24px;
+  color: #262626;
+  font-weight: 500;
+  margin-bottom: 24px;
+}
+
+.myga-setting-page-left {
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 200px;
+  background: #fcfcfc;
+  padding: 24px 16px;
+  overflow-y: auto;
+  height: 100vh;
+}
+
+.myga-setting-page-right {
+  margin-left: 200px;
+  width: calc(100vw - 200px);
+  padding: 0 56px;
+  max-width: 768px;
+}
+
+.myga-setting-page-item {
+  margin-bottom: 24px;
+}
+
+.myga-setting-page-title {
+  font-size: 20px;
+  line-height: 28px;
+  color: #262626;
+  font-weight: 500;
+  padding: 24px 0;
+}
+
+.myga-setting-page-left {
+  .ant-anchor {
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .ant-anchor::before {
+    display: none;
+  }
+
+  .ant-anchor-link {
+    padding: 5px 16px;
+    font-size: 14px;
+    line-height: 22px;
+    color: #262626;
+    border-radius: 6px;
+    cursor: pointer;
+  }
+
+  .ant-anchor-link .ant-anchor-link-title {
+    color: #262626;
+  }
+
+  .ant-anchor-ink-visible {
+    display: none !important;
+  }
+
+  .ant-anchor-link-active {
+    font-weight: 500;
+    background-color: #f4f5f5;
+    color: #262626;
+  }
+
+  .ant-anchor .ant-anchor-link-active > .ant-anchor-link-title {
+    color: #262626;
+  }
+}
