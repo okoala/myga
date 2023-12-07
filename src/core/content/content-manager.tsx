@@ -1,6 +1,6 @@
 import React from 'react';
 import { Configuration } from '@core/configuration';
-import { ContentRenderRegistyOption } from '../interfaces/i-plugin';
+import { ContentRegistyOption } from '../interfaces/i-plugin';
 
 // 内容插件管理
 export class ContentPluginManager {
@@ -8,7 +8,7 @@ export class ContentPluginManager {
   private _renders: React.FC<any>[] = [];
 
   registerRender = (
-    renderOption: ContentRenderRegistyOption,
+    renderOption: ContentRegistyOption,
     configuration: Configuration,
   ) => {
     this._configuration = configuration;

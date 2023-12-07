@@ -6,8 +6,10 @@ import { LinkPreviewPlugin } from '@plugins/link-preview';
 import { QuickMenuContentPlugin } from '@plugins/quick-menu/quick-menu-content-plugin';
 import { createRoot } from 'react-dom/client';
 import refreshOnUpdate from 'virtual:reload-on-update-in-view';
-refreshOnUpdate('pages/content');
+
+refreshOnUpdate('core');
 refreshOnUpdate('plugins');
+refreshOnUpdate('pages/content');
 
 const root = document.createElement('div');
 root.id = 'myga-extension-root-container';

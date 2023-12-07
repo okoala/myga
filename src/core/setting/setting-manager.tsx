@@ -1,5 +1,5 @@
 import { Configuration } from '@core/configuration';
-import { SettingRenderRegistyOption } from '../interfaces/i-plugin';
+import { SettingRegistyOption } from '../interfaces/i-plugin';
 
 // 配置管理
 export class SettingPluginManager {
@@ -7,7 +7,7 @@ export class SettingPluginManager {
   private _render: any;
 
   registerRender = (
-    renderOption: SettingRenderRegistyOption,
+    renderOption: SettingRegistyOption,
     configuration: Configuration,
   ) => {
     if (this._render) return;

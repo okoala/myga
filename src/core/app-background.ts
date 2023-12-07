@@ -33,7 +33,7 @@ export class AppBackground {
         this.backgroundPluginMananger?.registerBackground.call(
           pluginInstance,
           pluginInstance.registerContentRender(),
-          this.configuration,
+          // this.configuration,
         );
       }
     }

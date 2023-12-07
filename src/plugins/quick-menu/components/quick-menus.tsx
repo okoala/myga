@@ -7,30 +7,47 @@ import BoardIcon from '@assets/icons/board.svg?react';
 import TableIcon from '@assets/icons/table.svg?react';
 
 import styles from './quick-menus.less';
+import { useMemo } from 'react';
+import { DocService } from '../services/doc-service';
+import { DocType } from '../interfaces/i-doc';
 
-export function QuickMenus(props) {
-  const menus = [
+type MenuType = {
+  name: string;
+  type: DocType;
+  icon: React.FunctionComponent<
+    React.SVGProps<SVGSVGElement> & {
+      title?: string | undefined;
+    }
+  >;
+};
+
+export function QuickMenus() {
+  const menus: MenuType[] = [
     {
       name: '文档',
-      type: 'doc',
+      type: 'Doc',
       icon: DocIcon,
     },
     {
       name: '表格',
-      type: 'sheet',
+      type: 'Sheet',
       icon: SheetIcon,
     },
     {
       name: '画板',
-      type: 'board',
+      type: 'Board',
       icon: BoardIcon,
     },
     {
       name: '数据表',
-      type: 'table',
+      type: 'Table',
       icon: TableIcon,
     },
   ];
+
+  const docService = useMemo(() => {
+    return new DocService();
+  }, []);
 
   return (
     <>
@@ -43,7 +60,12 @@ export function QuickMenus(props) {
 
           const Icon = item.icon;
           return (
-            <Menu.Item key={item.type}>
+            <Menu.Item
+              key={item.type}
+              onClick={() => {
+                docService.createDocument(item.type);
+              }}
+            >
               {Icon && <Icon className="myga-quick-menus-icon" />}
               新建{item.name}
             </Menu.Item>

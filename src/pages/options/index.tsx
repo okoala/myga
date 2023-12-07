@@ -3,8 +3,8 @@ import refreshOnUpdate from 'virtual:reload-on-update-in-view';
 import { AppMain } from './main';
 
 refreshOnUpdate('core');
+refreshOnUpdate('plugins');
 refreshOnUpdate('pages/options');
-refreshOnUpdate('modules/settings');
 
 function init() {
   const appContainer = document.querySelector('#app-container');

@@ -1,8 +1,7 @@
-import {
-  YUQUE_DOMAIN,
-  YUQUE_CSRF_COOKIE_NAME,
-  CSRF_HEADER_NAME,
-} from './config';
+import { getCurrentTabUrl } from '@core/hosts/tabs';
+import { YUQUE_CSRF_COOKIE_NAME, CSRF_HEADER_NAME } from './config';
+import { getYuqueDomain } from '@core/yuque';
+
 import 'whatwg-fetch';
 
 export type IRequestMethod =
@@ -71,7 +70,11 @@ export const getCsrfToken = async (
 
 const prepareHeaders = async (): Promise<Record<string, string>> => {
   const headers: Record<string, string> = {};
-  const csrfToken = await getCsrfToken(YUQUE_DOMAIN, YUQUE_CSRF_COOKIE_NAME);
+  const url = await getCurrentTabUrl();
+  if (!url) throw new Error('no url');
+  const domain = await getYuqueDomain(url);
+  if (!domain) throw new Error('no domain match');
+  const csrfToken = await getCsrfToken(domain, YUQUE_CSRF_COOKIE_NAME);
   if (csrfToken) {
     headers[CSRF_HEADER_NAME] = csrfToken;
   } else {
@@ -80,7 +83,7 @@ const prepareHeaders = async (): Promise<Record<string, string>> => {
   return headers;
 };
 
-export async function request<T>(
+export async function ajax<T>(
   url: string,
   config: IRequestConfig,
   _option?: IRequestOptions,
@@ -93,7 +96,6 @@ export async function request<T>(
         ...headers,
         ...config.headers,
       },
-      method: config.method,
       ...config,
     };
     if (options.method === 'POST' || options.method === 'PUT') {
@@ -113,7 +115,13 @@ export async function request<T>(
         queryString = `?${paramsArray.join('&')}`;
       }
     }
-    const baseURL = config.baseURL || YUQUE_DOMAIN;
+    let baseURL = config.baseURL;
+    if (!baseURL) {
+      const url = await getCurrentTabUrl();
+      if (!url) throw new Error('no url');
+      baseURL = await getYuqueDomain(url);
+    }
+    if (!baseURL) throw new Error('no domain match');
     const response = await fetch(`${baseURL}${url}${queryString}`, {
       ...options,
     });

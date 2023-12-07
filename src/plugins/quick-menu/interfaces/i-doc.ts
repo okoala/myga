@@ -1,1 +1,1 @@
-export type DocType = 'doc' | 'sheet' | 'board' | 'table';
+export type DocType = 'Doc' | 'Sheet' | 'Board' | 'Table';
