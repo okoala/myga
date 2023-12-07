@@ -2,11 +2,11 @@ import React from 'react';
 import { Configuration } from '@core/configuration';
 
 export type SettingRenderRegistyOption = {
-  render: React.ReactElement;
+  RenderComponent: React.FC<any>;
 };
 
 export type ContentRenderRegistyOption = {
-  render: React.ReactElement;
+  RenderComponent: React.FC<any>;
 };
 
 export interface IPlugin {

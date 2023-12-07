@@ -3,6 +3,7 @@ import { SettingRenderRegistyOption } from './interfaces/i-plugin';
 
 // 配置管理
 export class SettingPluginManager {
+  private _configuration!: Configuration;
   private _render: any;
 
   registerRender = (
@@ -10,10 +11,12 @@ export class SettingPluginManager {
     configuration: Configuration,
   ) => {
     if (this._render) return;
-    this._render = renderOption.render({ configuration });
+    this._configuration = configuration;
+    this._render = renderOption.RenderComponent;
   };
 
   getRender = () => {
-    return this._render;
+    const RenderComponent = this._render;
+    return <RenderComponent configuration={this._configuration} />;
   };
 }

@@ -8,7 +8,7 @@ export class SettingManagePlugin implements IPlugin {
   // 注册配置渲染
   registerSettingRender() {
     return {
-      render: SettingPage,
+      RenderComponent: SettingPage,
     };
   }
 }

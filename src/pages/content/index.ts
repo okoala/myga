@@ -1,1 +1,1 @@
-import('@pages/content/main');
+import('@pages/content/main.tsx');

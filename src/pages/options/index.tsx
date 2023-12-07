@@ -1,4 +1,3 @@
-import React from 'react';
 import { createRoot } from 'react-dom/client';
 import refreshOnUpdate from 'virtual:reload-on-update-in-view';
 import { AppMain } from './main';

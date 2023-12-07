@@ -31,7 +31,7 @@ const manifest: chrome.runtime.ManifestV3 = {
   host_permissions: ['<all_urls>', '*://*/*'],
   content_scripts: [
     {
-      matches: ['https://yuque.antfin.com/*', 'https://yuque.com/*'],
+      matches: ['<all_urls>', '*://*/*'],
       js: ['src/pages/content/index.js'],
       // KEY for cache invalidation
       css: ['assets/css/contentStyle<KEY>.chunk.css'],
@@ -46,11 +46,7 @@ const manifest: chrome.runtime.ManifestV3 = {
         'yuque-logo-128.png',
         'yuque-logo-32.png',
       ],
-      matches: [
-        // 匹配数据表知识库
-        'https://yuque.antfin.com/*',
-        'https://yuque.com/*',
-      ],
+      matches: ['<all_urls>', '*://*/*'],
     },
   ],
 };

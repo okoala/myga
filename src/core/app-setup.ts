@@ -73,6 +73,6 @@ export class AppSetup {
     if (this.type === 'content') {
       return this.contentPluginMananger?.getRender();
     }
-    return <div></div>;
+    return null;
   }
 }
