@@ -6,7 +6,7 @@ import { LinkPreviewPlugin } from '@plugins/link-preview';
 import { QuickMenuPlugin } from '@plugins/quick-menu';
 
 export function AppMain() {
-  const app = AppSetup.init({
+  const app = AppSetup.initSetting({
     plugins: [
       SettingManagePlugin,
       BookTocPlugin,
@@ -16,5 +16,5 @@ export function AppMain() {
     ],
   });
 
-  return app.renderSetting();
+  return app.render();
 }

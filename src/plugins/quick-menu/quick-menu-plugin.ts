@@ -1,5 +1,6 @@
-import { IPlugin } from '@core';
+import { ContentRenderRegistyOption, IPlugin } from '@core';
 import { Configuration } from '@core/configuration';
+import { QuickMenu } from './quick-menu';
 
 export class QuickMenuPlugin implements IPlugin {
   pluginId = 'quick-menu';
@@ -12,5 +13,11 @@ export class QuickMenuPlugin implements IPlugin {
       title: this.pluginName,
       description: this.pluginDesc,
     });
+  }
+
+  registerContentRender(): ContentRenderRegistyOption {
+    return {
+      render: QuickMenu,
+    };
   }
 }

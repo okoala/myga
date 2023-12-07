@@ -1,1 +1,1 @@
-import('@pages/content/container');
+import('@pages/content/main');
