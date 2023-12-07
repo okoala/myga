@@ -1,6 +1,6 @@
 import React from 'react';
 import { Configuration } from '@core/configuration';
-import { ContentRenderRegistyOption } from './interfaces/i-plugin';
+import { ContentRenderRegistyOption } from '../interfaces/i-plugin';
 
 // 内容插件管理
 export class ContentPluginManager {

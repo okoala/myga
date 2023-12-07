@@ -1,12 +1,16 @@
 import React from 'react';
 import { Configuration } from '@core/configuration';
 
-export type SettingRenderRegistyOption = {
+export type SettingRegistyOption = {
   RenderComponent: React.FC<any>;
 };
 
-export type ContentRenderRegistyOption = {
+export type ContentRegistyOption = {
   RenderComponent: React.FC<any>;
+};
+
+export type BackgroundRegistyOption = {
+  event?: any;
 };
 
 export interface IPlugin {

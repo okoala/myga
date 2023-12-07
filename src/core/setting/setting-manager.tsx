@@ -1,5 +1,5 @@
 import { Configuration } from '@core/configuration';
-import { SettingRenderRegistyOption } from './interfaces/i-plugin';
+import { SettingRenderRegistyOption } from '../interfaces/i-plugin';
 
 // 配置管理
 export class SettingPluginManager {

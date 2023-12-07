@@ -15,6 +15,7 @@ export const QuickMenuMain: React.FC<any> = () => {
             position: 'absolute',
             top: position.top,
             left: position.left,
+            zIndex: 1000,
           }}
         >
           <QuickMenus />

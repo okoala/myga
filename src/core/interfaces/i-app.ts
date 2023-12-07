@@ -1,8 +1,11 @@
 import { IPluginCtor } from './i-plugin';
 
-type AppType = 'setting' | 'content' | 'background';
+export interface IApp {
+  start(): void;
+}
 
-export type AppConfig = {
-  type: AppType;
+export type AppType = 'setting' | 'content' | 'background';
+
+export type IAppConfig = {
   plugins: IPluginCtor[];
 };

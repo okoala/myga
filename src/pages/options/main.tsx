@@ -1,20 +1,10 @@
-import { AppSetup } from '@core';
+import { AppSetting } from '@core/app-setting';
 import { SettingManagePlugin } from '@plugins/setting-manage';
-import { BookTocPlugin } from '@plugins/book-toc';
-import { DocBeautifyPlugin } from '@plugins/doc-beautify';
-import { LinkPreviewPlugin } from '@plugins/link-preview';
-import { QuickMenuPlugin } from '@plugins/quick-menu';
 
 export function AppMain() {
-  const app = AppSetup.initSetting({
-    plugins: [
-      SettingManagePlugin,
-      BookTocPlugin,
-      DocBeautifyPlugin,
-      LinkPreviewPlugin,
-      QuickMenuPlugin,
-    ],
+  const app = AppSetting.init({
+    plugins: [SettingManagePlugin],
   });
 
-  return app.render();
+  return app.start();
 }

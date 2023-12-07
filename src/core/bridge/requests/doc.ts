@@ -1,4 +1,4 @@
-import { BackgroundEventEnum } from '@src/pages/background/interface';
+import { BackgroundEventEnum } from '../interface';
 import { ICallBridgeImpl } from '../interface';
 
 export function createDocProxy(impl: ICallBridgeImpl) {

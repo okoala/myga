@@ -30,9 +30,6 @@ export function QuickMenus(props) {
       type: 'table',
       icon: TableIcon,
     },
-    {
-      name: 'divide',
-    },
   ];
 
   return (

@@ -23,7 +23,7 @@ export function useQuickMenu() {
       });
     };
 
-    const onClickHandle = (e: MouseEvent) => {
+    const onClickHandle = e => {
       if (e.button === 0) {
         setShowMenus(false);
       }
