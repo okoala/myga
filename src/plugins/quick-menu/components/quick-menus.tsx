@@ -9,7 +9,7 @@ import TableIcon from '@assets/icons/table.svg?react';
 import styles from './quick-menus.less';
 import { useMemo } from 'react';
 import { DocService } from '../services/doc-service';
-import { DocType } from '../interfaces/i-doc';
+import { DocType } from '../../yuque-biz/interfaces/i-doc';
 
 type MenuType = {
   name: string;

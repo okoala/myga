@@ -1,6 +1,4 @@
-import { ajax } from '@core/request';
-import { BackgroundEventEnum } from '@core/interfaces/i-background';
-import { BackgroundRegistyOption } from '../interfaces/i-plugin';
+import { BackgroundMessagerRegistyOption } from '../interfaces/i-plugin';
 
 type MessageSender = chrome.runtime.MessageSender;
 type SendResponse = (response: any) => void;
@@ -12,7 +10,11 @@ export interface RequestMessage<T> {
 
 // 内容插件管理
 export class BackgroundManager {
-  registerBackground = (option: BackgroundRegistyOption) => {};
+  private readonly _messagers!: BackgroundMessagerRegistyOption[];
+
+  registerBackgroundMessager = (messager: BackgroundMessagerRegistyOption) => {
+    this._messagers.push(messager);
+  };
 
   start = () => {
     // 不能用 async，不然成功返回信息
@@ -22,13 +24,13 @@ export class BackgroundManager {
         _sender: MessageSender,
         sendResponse: SendResponse,
       ) => {
-        switch (_request.action) {
-          case BackgroundEventEnum.Request: {
-            const { url, config, options = {} } = _request.data;
-            ajax(url, config, options)
+        for (const messager of this._messagers) {
+          if (messager.name === _request.action) {
+            messager
+              .handler(_request.data)
               .then(res => sendResponse(res))
               .catch(err => sendResponse(err));
-            break;
+            return true;
           }
         }
         // 返回true表示监听到消息后执行sendResponse，否则不会执行

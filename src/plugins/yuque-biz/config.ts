@@ -1,4 +1,4 @@
-import pkgJSON from '../../../package.json';
+import pkgJSON from '@pkg';
 
 export const pkg = pkgJSON;
 

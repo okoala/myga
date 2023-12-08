@@ -30,6 +30,7 @@ const viteConfig = {
       '@pages': pagesDir,
       '@plugins': resolve(srcDir, 'plugins'),
       '@lib': resolve(srcDir, 'lib'),
+      '@pkg': resolve(rootDir, 'package.json'),
     },
   },
   plugins: [

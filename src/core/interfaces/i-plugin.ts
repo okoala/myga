@@ -9,8 +9,9 @@ export type ContentRegistyOption = {
   RenderComponent: React.FC<any>;
 };
 
-export type BackgroundRegistyOption = {
-  event?: any;
+export type BackgroundMessagerRegistyOption = {
+  name: string;
+  handler: (...args: any[]) => Promise<any>;
 };
 
 export interface IPlugin {
@@ -23,9 +24,11 @@ export interface IPlugin {
   // 注册配置信息
   registerConfiguraion?(configuration: Configuration): void;
   // 注册设置渲染
-  registerSettingRender?(): SettingRenderRegistyOption;
+  registerSettingRender?(): SettingRegistyOption;
   // 注册内容渲染
-  registerContentRender?(): ContentRenderRegistyOption;
+  registerContentRender?(): ContentRegistyOption;
+  // 注册背景消息
+  registerBackgroundMessager?(): BackgroundMessagerRegistyOption;
 }
 
 export interface IPluginCtor {

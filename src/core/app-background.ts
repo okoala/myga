@@ -29,10 +29,10 @@ export class AppBackground {
     }
 
     for (const pluginInstance of pluginInstances) {
-      if (pluginInstance.registerContentRender) {
-        this.backgroundPluginMananger?.registerBackground.call(
+      if (pluginInstance.registerBackgroundMessager) {
+        this.backgroundPluginMananger?.registerBackgroundMessager.call(
           pluginInstance,
-          pluginInstance.registerContentRender(),
+          pluginInstance.registerBackgroundMessager(),
           // this.configuration,
         );
       }
