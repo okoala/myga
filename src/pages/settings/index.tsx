@@ -4,7 +4,7 @@ import { AppMain } from './main';
 
 refreshOnUpdate('core');
 refreshOnUpdate('plugins');
-refreshOnUpdate('pages/options');
+refreshOnUpdate('pages/settings');
 
 function init() {
   const appContainer = document.querySelector('#app-container');

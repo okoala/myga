@@ -20,7 +20,7 @@ const manifest: chrome.runtime.ManifestV3 = {
     'scripting',
     'sidePanel',
   ],
-  options_page: 'src/pages/options/index.html',
+  options_page: 'src/pages/settings/index.html',
   background: {
     service_worker: 'src/pages/background/index.js',
     type: 'module',

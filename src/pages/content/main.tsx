@@ -2,7 +2,6 @@ import { AppContent } from '@core/app-content';
 import { StyleProvider } from '@ant-design/cssinjs';
 import { BookTocPlugin } from '@plugins/book-toc';
 import { DocBeautifyPlugin } from '@plugins/doc-beautify';
-import { LinkPreviewPlugin } from '@plugins/link-preview';
 import { QuickMenuContentPlugin } from '@plugins/quick-menu/quick-menu-content-plugin';
 import { createRoot } from 'react-dom/client';
 import refreshOnUpdate from 'virtual:reload-on-update-in-view';
@@ -23,12 +22,7 @@ const shadowRoot = root.attachShadow({ mode: 'open' });
 shadowRoot.appendChild(rootIntoShadow);
 
 const app = AppContent.init({
-  plugins: [
-    BookTocPlugin,
-    DocBeautifyPlugin,
-    LinkPreviewPlugin,
-    QuickMenuContentPlugin,
-  ],
+  plugins: [BookTocPlugin, DocBeautifyPlugin, QuickMenuContentPlugin],
 });
 
 // antd5 针对 shadow dom 的支持

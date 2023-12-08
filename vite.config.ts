@@ -53,7 +53,7 @@ const viteConfig = {
     reportCompressedSize: isProduction,
     rollupOptions: {
       input: {
-        options: resolve(pagesDir, 'options', 'index.html'),
+        settings: resolve(pagesDir, 'settings', 'index.html'),
         content: resolve(pagesDir, 'content', 'index.ts'),
         background: resolve(pagesDir, 'background', 'index.ts'),
         contentStyle: resolve(pagesDir, 'content', 'style.less'),
