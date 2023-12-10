@@ -1,7 +1,7 @@
 {
-  "name": "myga-chrome-extension",
+  "name": "okrrr",
   "version": "1.0.0",
-  "description": "语雀增强插件",
+  "description": "让网页浏览体验更方便有趣, 支持语雀、B站、Youtube 等有趣的功能",
   "type": "module",
   "private": true,
   "scripts": {

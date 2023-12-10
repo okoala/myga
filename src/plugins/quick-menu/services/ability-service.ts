@@ -1,4 +1,4 @@
-import { isYuquePathname } from '@core/yuque';
+import { isYuquePathname } from '@plugins/yuque-biz';
 
 export class AbilityService {
   canQuickMenu() {
