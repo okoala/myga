@@ -1,4 +1,4 @@
-import { request } from '@core/request';
+import { request } from '@plugins/request';
 
 export class BookApi {
   async getLastestEditBook() {

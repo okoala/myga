@@ -1,8 +1,5 @@
+import { MapT } from '../interfaces/i-request';
 import { backgrondRequestEventName } from '../constants';
-
-export interface MapT<T> {
-  [key: string]: T;
-}
 
 export function request(data?: MapT<any>) {
   return new Promise((resolve, reject) => {

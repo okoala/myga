@@ -1,5 +1,6 @@
 import { getCurrentTabUrl } from '@core/hosts/tabs';
 import { YUQUE_CSRF_COOKIE_NAME, CSRF_HEADER_NAME } from './config';
+import { getYuqueDomain } from './yuque-path';
 
 export class CsrfTokenError extends Error {
   constructor(message: any) {
@@ -62,5 +63,5 @@ export const getYuqueAjaxHeaders = async (): Promise<
 export const getYuqueAjaxBaseUrl = async () => {
   const url = await getCurrentTabUrl();
   if (!url) throw new Error('no url');
-  baseURL = await getYuqueDomain(url);
+  return await getYuqueDomain(url);
 };
