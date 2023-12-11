@@ -21,6 +21,8 @@ export interface IPlugin {
   pluginName: string;
   // 插件描述
   pluginDesc?: string;
+  // 插件有效的 urls
+  pluginUrls?: string[];
   // 注册配置信息
   registerConfiguraion?(configuration: Configuration): void;
   // 注册设置渲染

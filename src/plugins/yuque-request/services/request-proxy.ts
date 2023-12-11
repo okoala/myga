@@ -1,8 +1,8 @@
-import { MapT } from '../interfaces/i-request';
+import { MapT } from '../interfaces/i-yuque-request';
 import { backgrondRequestEventName } from '../constants';
 
 export function request(data?: MapT<any>) {
-  return new Promise((resolve, reject) => {
+  return new Promise(async (resolve, reject) => {
     chrome.runtime.sendMessage(
       {
         action: backgrondRequestEventName,

@@ -7,7 +7,7 @@ import {
   backgrondRequestEventName,
 } from './constants';
 
-export class RequestBackgroundPlugin implements IPlugin {
+export class YuqueRequestBackgroundPlugin implements IPlugin {
   readonly pluginId = pluginId;
   readonly pluginName = pluginName;
   readonly pluginDesc = pluginDesc;

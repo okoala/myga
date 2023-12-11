@@ -1,4 +1,4 @@
-export const getYuqueDomain = async (url: string) => {
+export const getYuqueDomain = async (url?: string) => {
   if (!url) return;
   const matches =
     /^(?:https?:\/\/)?(?:[^@\n]+@)?(?:www\.)?([^:\/\n?]+)/gim.exec(url);

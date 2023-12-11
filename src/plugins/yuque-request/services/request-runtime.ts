@@ -1,4 +1,6 @@
 import 'whatwg-fetch';
+import { getYuqueAjaxBaseUrl, getYuqueAjaxHeaders } from './yuque-ajax-prepare';
+import { defaultYuqueBaseUrl } from '../constants';
 
 export type IRequestMethod =
   | 'GET'
@@ -29,9 +31,14 @@ export async function ajax<T>(
   _option?: IRequestOptions,
 ): Promise<{ status: number; data: T }> {
   try {
+    let baseURL = config.baseURL;
+    if (!baseURL) baseURL = await getYuqueAjaxBaseUrl();
+    if (!baseURL) baseURL = defaultYuqueBaseUrl;
+    if (!baseURL) throw new Error('no domain match');
     let queryString = '';
     const options: RequestInit = {
       ...config,
+      headers: await getYuqueAjaxHeaders(baseURL),
     };
     if (options.method === 'POST' || options.method === 'PUT') {
       options.headers = {
@@ -50,8 +57,6 @@ export async function ajax<T>(
         queryString = `?${paramsArray.join('&')}`;
       }
     }
-    let baseURL = config.baseURL;
-    if (!baseURL) throw new Error('no domain match');
     const response = await fetch(`${baseURL}${url}${queryString}`, {
       ...options,
     });

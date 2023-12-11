@@ -10,7 +10,7 @@ export interface RequestMessage<T> {
 
 // 内容插件管理
 export class BackgroundManager {
-  private readonly _messagers!: BackgroundMessagerRegistyOption[];
+  private readonly _messagers: BackgroundMessagerRegistyOption[] = [];
 
   registerBackgroundMessager = (messager: BackgroundMessagerRegistyOption) => {
     this._messagers.push(messager);

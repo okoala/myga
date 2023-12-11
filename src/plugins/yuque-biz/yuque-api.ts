@@ -28,3 +28,6 @@ export class YuqueApi {
     return this._translate;
   }
 }
+
+const yuqueApi = new YuqueApi();
+export { yuqueApi };

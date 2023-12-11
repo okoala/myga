@@ -1,6 +1,9 @@
 import { getCurrentTabUrl } from '@core/hosts/tabs';
-import { YUQUE_CSRF_COOKIE_NAME, CSRF_HEADER_NAME } from './config';
-import { getYuqueDomain } from './yuque-path';
+import {
+  YUQUE_CSRF_COOKIE_NAME,
+  CSRF_HEADER_NAME,
+} from '../../yuque-biz/config';
+import { getYuqueDomain } from '../../yuque-biz/yuque-path';
 
 export class CsrfTokenError extends Error {
   constructor(message: any) {
@@ -43,14 +46,10 @@ export const getCsrfToken = async (
   });
 };
 
-export const getYuqueAjaxHeaders = async (): Promise<
-  Record<string, string>
-> => {
+export const getYuqueAjaxHeaders = async (
+  domain: string,
+): Promise<Record<string, string>> => {
   const headers: Record<string, string> = {};
-  const url = await getCurrentTabUrl();
-  if (!url) throw new Error('no url');
-  const domain = await getYuqueDomain(url);
-  if (!domain) throw new Error('no domain match');
   const csrfToken = await getCsrfToken(domain, YUQUE_CSRF_COOKIE_NAME);
   if (csrfToken) {
     headers[CSRF_HEADER_NAME] = csrfToken;

@@ -29,6 +29,17 @@ export class AppBackground {
     }
 
     for (const pluginInstance of pluginInstances) {
+      if (pluginInstance.pluginUrls) {
+        let isMatch = false;
+        for (const urlPattern of pluginInstance.pluginUrls) {
+          const pattern = new globalThis.URLPattern(urlPattern);
+          if (pattern.test(document.location.href)) {
+            isMatch = true;
+            break;
+          }
+        }
+        if (!isMatch) continue;
+      }
       if (pluginInstance.registerBackgroundMessager) {
         this.backgroundPluginMananger?.registerBackgroundMessager.call(
           pluginInstance,

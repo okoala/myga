@@ -1,4 +1,4 @@
-import { request } from '@plugins/request';
+import { request } from '@plugins/yuque-request';
 import { getDefaultDocSlug, getDefaultTitle, getDocFormat } from '../util';
 
 export class DocApi {

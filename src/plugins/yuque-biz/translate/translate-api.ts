@@ -1,12 +1,13 @@
-import { request } from '@plugins/request';
+import { request } from '@plugins/yuque-request';
 import { detectLanguage } from '@core/hosts/i18n';
 
 export class TranslateApi {
-  async translate(text: string) {
+  async text(text: string) {
     const language = await detectLanguage(text);
     const res: any = await request({
       url: `/api/services/translate/text`,
       config: {
+        baseURL: 'https://www.yuque.com',
         method: 'POST',
         data: {
           srcLanguage: language,
