@@ -31,7 +31,6 @@ export function useQuickMenu() {
     };
 
     const abilityService = new AbilityService();
-    console.log('=1==');
     // 需要判断是否当前页面是否可以使用右键菜单
     const can = abilityService.canQuickMenu();
     if (can) {
