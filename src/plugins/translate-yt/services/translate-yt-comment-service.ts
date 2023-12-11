@@ -1,11 +1,12 @@
 import { yuqueApi } from '@plugins/yuque-biz/yuque-api';
 import { IYoutubeComment } from '../interfaces/i-youtube';
 import { storage } from '@core/hosts/storage';
-import { youtubeCommentCacheKey } from '../constants';
+import { maxTranslateCacheLength, youtubeCommentCacheKey } from '../constants';
+import _ from 'lodash';
 
 // 翻译 youtube 评论数据
 class TranslateYoutubeCommentService {
-  private _cache: Map<string, IYoutubeComment> = new Map();
+  private _cache: Record<string, IYoutubeComment> = {};
 
   constructor() {
     this.init();
@@ -13,19 +14,28 @@ class TranslateYoutubeCommentService {
 
   async init() {
     const cacheData = await storage.get(youtubeCommentCacheKey);
-    this._cache = cacheData ? JSON.parse(cacheData) : new Map();
+    this._cache = cacheData ? JSON.parse(cacheData) : {};
   }
 
   getCacheComment(commentId: string) {
-    return this._cache.get(commentId);
+    return this._cache[commentId];
   }
 
   setCacheComment(commentId: string, content: string) {
-    this._cache.set(commentId, {
+    this._cache[commentId] = {
       id: commentId,
       content,
       translatedAt: new Date().getTime(),
-    });
+    };
+    const keys = Object.keys(this._cache);
+    if (keys.length > maxTranslateCacheLength) {
+      const deleteCount = keys.length - maxTranslateCacheLength;
+      const values = Object.values(this._cache);
+      const orderdValues = _.orderBy(values, ['translatedAt', 'asc']);
+      for (let i = 0; i <= deleteCount; i++) {
+        delete this._cache[orderdValues[i].id];
+      }
+    }
     storage.set(youtubeCommentCacheKey, JSON.stringify(this._cache));
   }
 

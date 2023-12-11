@@ -7,14 +7,20 @@ export function useYoutubeCommentTranslate() {
 
   const createTranslateEntry = ($commentItemRoot: HTMLElement) => {
     const timeWrap = $commentItemRoot.querySelector('.published-time-text');
-    if ($commentItemRoot.querySelector('.okrrr-translate-text') || !timeWrap)
+    if (
+      $commentItemRoot.querySelector('.okrrr-translate-text') ||
+      $commentItemRoot.querySelector('.okrrr-translate-result') ||
+      !timeWrap
+    ) {
       return;
+    }
     const span = document.createElement('span');
     span.className =
       'okrrr-translate-text published-time-text style-scope ytd-comment-renderer';
     span.setAttribute('style', 'cursor: pointer; margin-left: 5px;');
     span.textContent = '翻译';
     span.onclick = () => {
+      if ($commentItemRoot.querySelector('.okrrr-translate-result')) return;
       const $content = $commentItemRoot.querySelector('#content-text');
       const content = $content?.textContent;
       const commentHerf = $commentItemRoot
@@ -33,7 +39,8 @@ export function useYoutubeCommentTranslate() {
               if (text) {
                 const el = document.createElement('div');
                 el.textContent = text;
-                el.className = 'style-scope ytd-comment-renderer';
+                el.className =
+                  'okrrr-translate-result style-scope ytd-comment-renderer';
                 el.setAttribute(
                   'style',
                   'color: var(--yt-spec-text-primary);font-size: 1.4rem;',
