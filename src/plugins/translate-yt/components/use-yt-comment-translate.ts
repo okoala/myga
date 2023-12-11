@@ -5,6 +5,32 @@ import { youtubeCommentTranslateService } from '../services/translate-yt-comment
 export function useYoutubeCommentTranslate() {
   const observerRef = useRef<MutationObserver>();
 
+  const insertTranslateResult = (
+    $commentItemRoot: HTMLElement,
+    text: string,
+  ) => {
+    if (text) {
+      if ($commentItemRoot.querySelector('.okrrr-translate-result')) return;
+      const el = document.createElement('div');
+      el.textContent = text;
+      el.className = 'okrrr-translate-result style-scope ytd-comment-renderer';
+      el.setAttribute(
+        'style',
+        'color: var(--yt-spec-text-primary);font-size: 1.4rem;',
+      );
+      insertAfter(el, $commentItemRoot.querySelector('#comment-content'));
+    }
+  };
+
+  const getCommentId = ($commentItemRoot: HTMLElement) => {
+    const commentHerf = $commentItemRoot
+      .querySelector('.published-time-text .yt-simple-endpoint')
+      ?.getAttribute('href');
+    if (!commentHerf) return null;
+    const commentId = new URLSearchParams(commentHerf).get('lc');
+    return commentId;
+  };
+
   const createTranslateEntry = ($commentItemRoot: HTMLElement) => {
     const timeWrap = $commentItemRoot.querySelector('.published-time-text');
     if (
@@ -20,41 +46,30 @@ export function useYoutubeCommentTranslate() {
     span.setAttribute('style', 'cursor: pointer; margin-left: 5px;');
     span.textContent = '翻译';
     span.onclick = () => {
-      if ($commentItemRoot.querySelector('.okrrr-translate-result')) return;
       const $content = $commentItemRoot.querySelector('#content-text');
       const content = $content?.textContent;
-      const commentHerf = $commentItemRoot
-        .querySelector('.published-time-text .yt-simple-endpoint')
-        ?.getAttribute('href');
-
-      if (commentHerf && content) {
-        const commentId = new URLSearchParams(commentHerf).get('lc');
-        if (commentId) {
-          youtubeCommentTranslateService
-            .translate({
-              id: commentId!,
-              content,
-            })
-            .then(text => {
-              if (text) {
-                const el = document.createElement('div');
-                el.textContent = text;
-                el.className =
-                  'okrrr-translate-result style-scope ytd-comment-renderer';
-                el.setAttribute(
-                  'style',
-                  'color: var(--yt-spec-text-primary);font-size: 1.4rem;',
-                );
-                insertAfter(
-                  el,
-                  $commentItemRoot.querySelector('#comment-content'),
-                );
-              }
-            });
-        }
+      const commentId = getCommentId($commentItemRoot);
+      if (content && commentId) {
+        youtubeCommentTranslateService
+          .translate({
+            id: commentId!,
+            content,
+          })
+          .then(text => {
+            insertTranslateResult($commentItemRoot, text!);
+          });
       }
     };
     insertAfter(span, timeWrap);
+  };
+
+  const createTranslateResult = ($commentItemRoot: HTMLElement) => {
+    const commentId = getCommentId($commentItemRoot);
+    if (!commentId) return;
+    const cacheComment =
+      youtubeCommentTranslateService.getCacheComment(commentId);
+    if (!cacheComment) return;
+    insertTranslateResult($commentItemRoot, cacheComment.content!);
   };
 
   useEffect(() => {
@@ -71,6 +86,7 @@ export function useYoutubeCommentTranslate() {
               mutation.addedNodes.length > 0
             ) {
               createTranslateEntry(mutation.target as HTMLElement);
+              createTranslateResult(mutation.target as HTMLElement);
             }
           }
         });
