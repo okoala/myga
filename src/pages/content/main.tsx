@@ -1,10 +1,8 @@
 import { AppContent } from '@core/app-content';
 import { StyleProvider } from '@ant-design/cssinjs';
-import { BookTocPlugin } from '@plugins/book-toc';
-import { DocBeautifyPlugin } from '@plugins/doc-beautify';
-import { QuickMenuContentPlugin } from '@plugins/quick-menu/quick-menu-content-plugin';
-import { TranslateYoutubeContentPlugin } from '@plugins/translate-yt/translate-yt-content-plugin';
-import { LinkPreviewContentPlugin } from '@plugins/link-preview/link-preview-content-plugin';
+import { QuickMenuContentPlugin } from '@plugins/yuque-quick-menu/quick-menu-content-plugin';
+import { TranslateYoutubeContentPlugin } from '@plugins/youtube-translate/translate-yt-content-plugin';
+import { LinkPreviewContentPlugin } from '@plugins/yuque-link-preview/link-preview-content-plugin';
 import { createRoot } from 'react-dom/client';
 import refreshOnUpdate from 'virtual:reload-on-update-in-view';
 
@@ -25,8 +23,6 @@ shadowRoot.appendChild(rootIntoShadow);
 
 const app = AppContent.init({
   plugins: [
-    BookTocPlugin,
-    DocBeautifyPlugin,
     QuickMenuContentPlugin,
     TranslateYoutubeContentPlugin,
     LinkPreviewContentPlugin,

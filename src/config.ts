@@ -1,4 +1,4 @@
-import LinkPreviewConfiuration from '@plugins/link-preview/configuration';
+import LinkPreviewConfiuration from '@plugins/yuque-link-preview/configuration';
 
 const AppConfig = {
   configs: [LinkPreviewConfiuration],
