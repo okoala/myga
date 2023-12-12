@@ -1,6 +1,6 @@
 import { yuqueApi } from '@plugins/yuque-biz/yuque-api';
 import { IYoutubeComment } from '../interfaces/i-youtube';
-import { storage } from '@core/hosts/storage';
+import { storage } from '@lib/hosts/storage';
 import { maxTranslateCacheLength, youtubeCommentCacheKey } from '../constants';
 import _ from 'lodash';
 

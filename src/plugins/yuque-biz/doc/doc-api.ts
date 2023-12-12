@@ -23,5 +23,22 @@ export class DocApi {
     return res?.data;
   }
 
-  async getDoc(docId) {}
+  // 获取文档详情
+  async getDocDetail(docSlug: string, bookSlug: string, userLogin: string) {
+    const res: any = await request({
+      url: `/api/docs/${docSlug}`,
+      config: {
+        method: 'GET',
+        data: {
+          user_login: userLogin,
+          book_slug: bookSlug,
+          merge_dynamic_data: false,
+          include_contributors: false,
+          include_like: false,
+          include_hits: false,
+        },
+      },
+    });
+    return res?.data;
+  }
 }

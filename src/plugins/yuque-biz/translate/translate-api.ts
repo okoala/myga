@@ -1,5 +1,5 @@
 import { request } from '@plugins/yuque-request';
-import { detectLanguage } from '@core/hosts/i18n';
+import { detectLanguage } from '@lib/hosts/i18n';
 
 export class TranslateApi {
   async text(text: string) {

@@ -1,4 +1,4 @@
-import { getCurrentTabUrl } from '@core/hosts/tabs';
+import { getCurrentTabUrl } from '@lib/hosts/tabs';
 import {
   YUQUE_CSRF_COOKIE_NAME,
   CSRF_HEADER_NAME,
