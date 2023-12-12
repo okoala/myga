@@ -2,7 +2,7 @@ import { request } from '@plugins/yuque-request';
 import { getDefaultDocSlug, getDefaultTitle, getDocFormat } from '../util';
 
 export class DocApi {
-  async createDoc(book, docType) {
+  async createDoc(bookId: number, docType) {
     const res: any = await request({
       url: `/api/docs`,
       config: {
@@ -10,7 +10,7 @@ export class DocApi {
         data: {
           action: 'prependChild',
           body_draft_asl: null,
-          book_id: book.id,
+          book_id: bookId,
           format: getDocFormat(docType),
           insert_to_catalog: true,
           slug: getDefaultDocSlug(),
@@ -22,4 +22,6 @@ export class DocApi {
     });
     return res?.data;
   }
+
+  async getDoc(docId) {}
 }

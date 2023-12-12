@@ -1,5 +1,4 @@
 import { useEffect, useState } from 'react';
-import { AbilityService } from '../services/ability-service';
 
 type MenuPosition = {
   top: number;
@@ -30,13 +29,8 @@ export function useQuickMenu() {
       }
     };
 
-    const abilityService = new AbilityService();
-    // 需要判断是否当前页面是否可以使用右键菜单
-    const can = abilityService.canQuickMenu();
-    if (can) {
-      document.addEventListener('click', onClickHandle);
-      document.addEventListener('contextmenu', onContxtMenuHandle);
-    }
+    document.addEventListener('click', onClickHandle);
+    document.addEventListener('contextmenu', onContxtMenuHandle);
     return () => {
       document.removeEventListener('click', onClickHandle);
       document.removeEventListener('contextmenu', onContxtMenuHandle);
