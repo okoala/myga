@@ -26,7 +26,7 @@ const manifest: chrome.runtime.ManifestV3 = {
     type: 'module',
   },
   icons: {
-    128: 'yuque-logo-128.png',
+    128: 'okrrr-128.png',
   },
   host_permissions: ['<all_urls>', '*://*/*'],
   content_scripts: [
@@ -43,8 +43,8 @@ const manifest: chrome.runtime.ManifestV3 = {
       resources: [
         'assets/js/*.js',
         'assets/css/*.css',
-        'yuque-logo-128.png',
-        'yuque-logo-32.png',
+        'okrrr-128.png',
+        'okrrr-32.png',
       ],
       matches: ['<all_urls>', '*://*/*'],
     },
