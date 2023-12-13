@@ -1,5 +1,5 @@
 import { ContentRegistyOption, IPlugin } from '@core';
-import { TodoEditor } from './components/todo-editor';
+import { Todo } from './components/todo';
 import { pluginId, pluginName, pluginDesc } from './constants';
 
 export class TodoContentPlugin implements IPlugin {
@@ -9,7 +9,7 @@ export class TodoContentPlugin implements IPlugin {
 
   registerContentRender(): ContentRegistyOption {
     return {
-      RenderComponent: TodoEditor,
+      RenderComponent: Todo,
     };
   }
 }
