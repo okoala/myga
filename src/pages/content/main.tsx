@@ -1,17 +1,17 @@
 import { AppContent } from '@core/app-content';
 import { StyleProvider } from '@ant-design/cssinjs';
-import { QuickMenuContentPlugin } from '@plugins/yuque-quick-menu/quick-menu-content-plugin';
-import { TranslateYoutubeContentPlugin } from '@plugins/youtube-translate/translate-yt-content-plugin';
-import { LinkPreviewContentPlugin } from '@plugins/yuque-link-preview/link-preview-content-plugin';
 import { createRoot } from 'react-dom/client';
 import refreshOnUpdate from 'virtual:reload-on-update-in-view';
+import { QuickMenuContentPlugin } from '@plugins/yuque-quick-menu/quick-menu-content-plugin';
+import { TranslateYoutubeContentPlugin } from '@plugins/youtube-translate/translate-yt-content-plugin';
+import { TodoContentPlugin } from '@plugins/todo/todo-content-plugin';
 
 refreshOnUpdate('core');
 refreshOnUpdate('plugins');
 refreshOnUpdate('pages/content');
 
 const root = document.createElement('div');
-root.id = 'myga-extension-root-container';
+root.id = 'okrrr-extension-root-container';
 
 document.body.append(root);
 
@@ -25,7 +25,7 @@ const app = AppContent.init({
   plugins: [
     QuickMenuContentPlugin,
     TranslateYoutubeContentPlugin,
-    LinkPreviewContentPlugin,
+    TodoContentPlugin,
   ],
 });
 
