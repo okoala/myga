@@ -1,4 +1,11 @@
 import { request } from '@plugins/yuque-request';
+import { getDefaultBookSlug } from '../util';
+
+export type BookCreateParams = {
+  name: string;
+  slug?: string;
+  description?: string;
+};
 
 export class BookApi {
   async getLastestEditBook() {
@@ -16,5 +23,22 @@ export class BookApi {
     });
 
     return res?.data?.list?.[0]?.book;
+  }
+
+  async createBook(book: BookCreateParams) {
+    const res: any = await request({
+      url: '/api/books',
+      config: {
+        method: 'POST',
+        data: {
+          type: 'Book',
+          name: book.name,
+          slug: book.slug || getDefaultBookSlug(),
+          description: book.description || '',
+        },
+      },
+    });
+
+    return res?.data;
   }
 }

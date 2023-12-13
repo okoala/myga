@@ -5,6 +5,10 @@ export function getDefaultDocSlug() {
   return uid(16);
 }
 
+export function getDefaultBookSlug() {
+  return uid(16);
+}
+
 export function getDefaultTitle(type: DocType) {
   if (type === 'Doc') return '无标题文档';
   if (type === 'Sheet') return '无标题表格';
