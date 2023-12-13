@@ -203,8 +203,13 @@ export const Calendar: React.FC = () => {
                 <Col>
                   <Select
                     size="small"
-                    dropdownMatchSelectWidth={false}
+                    popupMatchSelectWidth={false}
                     className="my-year-select"
+                    getPopupContainer={() => {
+                      return document
+                        .querySelector('#okrrr-extension-root-container')!
+                        .shadowRoot!.querySelector('.okrrr-todo-container')!;
+                    }}
                     value={year}
                     options={options}
                     onChange={newYear => {
@@ -216,9 +221,14 @@ export const Calendar: React.FC = () => {
                 <Col>
                   <Select
                     size="small"
-                    dropdownMatchSelectWidth={false}
+                    popupMatchSelectWidth={false}
                     value={month}
                     options={monthOptions}
+                    getPopupContainer={() => {
+                      return document
+                        .querySelector('#okrrr-extension-root-container')!
+                        .shadowRoot!.querySelector('.okrrr-todo-container')!;
+                    }}
                     onChange={newMonth => {
                       const now = value.clone().month(newMonth);
                       onChange(now);
