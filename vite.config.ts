@@ -31,6 +31,7 @@ const viteConfig = {
       '@plugins': resolve(srcDir, 'plugins'),
       '@lib': resolve(srcDir, 'lib'),
       '@pkg': resolve(rootDir, 'package.json'),
+      '@config': resolve(srcDir, 'config.ts'),
     },
   },
   plugins: [

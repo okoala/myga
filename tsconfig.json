@@ -27,7 +27,7 @@
     "lib": ["dom", "dom.iterable", "esnext"],
     "typeRoots": ["./src/global.d.ts", "node_modules/@types"],
     "paths": {
-      "@config": ["src/app.ts"],
+      "@config": ["src/config.ts"],
       "@core": ["src/core/index.ts"],
       "@core/*": ["src/core/*"],
       "@assets/*": ["src/assets/*"],

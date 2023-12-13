@@ -1,4 +1,3 @@
-import { Colorfull } from '@lib/uilib/colorfull';
 import styles from './todo-container.less';
 import { useEffect, useState } from 'react';
 
@@ -13,9 +12,7 @@ export function TodoContainer(props) {
   return (
     <>
       <style>{styles}</style>
-      <div className="okrrr-todo-container">
-        <Colorfull color={1}>{props.children}</Colorfull>
-      </div>
+      <div className="okrrr-todo-container">{props.children}</div>
     </>
   );
 }
