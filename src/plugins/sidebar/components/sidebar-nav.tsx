@@ -1,7 +1,9 @@
 import { useStorageLocal } from '@lib/use-storage';
+import { CloseOutlined } from '@ant-design/icons';
 import styles from './sidebar-nav.less';
 import classnames from 'classnames';
 import { sidebarTabKey } from '../constants';
+import { sidebarService } from '../services/sidebar-service';
 
 export function SidebarNav(props) {
   const [tabId, setTabId] = useStorageLocal(
@@ -15,7 +17,14 @@ export function SidebarNav(props) {
     <>
       <style>{styles}</style>
       <div className="okrrr-sidebar-nav-container">
-        <div className="okrrr-sidebar-nav-header"></div>
+        <div className="okrrr-sidebar-nav-header">
+          <span
+            className="okrrr-sidebar-nav-header-close"
+            onClick={() => sidebarService.closeSidepanel()}
+          >
+            <CloseOutlined />
+          </span>
+        </div>
         <div className="okrrr-sidebar-nav">
           <div className="okrrr-sidebar-nav-items">
             {navItems.map(item => {

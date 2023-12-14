@@ -26,8 +26,12 @@ export class SidebarContentPlugin implements IPlugin {
   registerContentMessager(): ContentMessagerRegistyOption {
     return {
       name: contentSidebarEventName,
-      handler: async () => {
-        sidebarIframeService.inject();
+      handler: async data => {
+        if (data.isOpen) {
+          sidebarIframeService.show();
+        } else {
+          sidebarIframeService.hide();
+        }
         return true;
       },
     };

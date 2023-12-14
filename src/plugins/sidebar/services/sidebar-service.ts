@@ -7,8 +7,16 @@ export class SidebarService {
   // 默认采用iframe写入
   async openSidepanel(mode: OpenSidepanelMode = OpenSidepanelMode.iframe) {
     if (mode === OpenSidepanelMode.iframe) {
-      await sendMessage(contentSidebarEventName, {});
+      await sendMessage(contentSidebarEventName, {
+        isOpen: true,
+      });
     }
+  }
+
+  async closeSidepanel() {
+    await sendMessage(contentSidebarEventName, {
+      isOpen: false,
+    });
   }
 }
 

@@ -48,11 +48,15 @@ export class SidebarIframeService {
     rootContainer.appendChild(this._iframe);
 
     this._iframe.onload = () => {
-      this.show();
+      this._iframe.classList.add('show');
     };
   }
 
   show() {
+    if (!this._iframe) {
+      this.inject();
+      return;
+    }
     this._iframe.classList.add('show');
   }
 
