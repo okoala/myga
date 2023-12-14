@@ -1,5 +1,5 @@
-import createChromeStorageStateHook from './createChromeStorageStateHook';
-import useChromeStorage from './useChromeStorage';
+import createStorageStateHook from './createStorageStateHook';
+import useStorage from './useStorage';
 
 /**
  * Hook which will use `chrome.storage.local` to persist state.
@@ -13,8 +13,8 @@ import useChromeStorage from './useChromeStorage';
  *      `error` - will contain error appeared in storage. if isPersistent is true, there will be an empty string
  *      `isInitialStateResolved` - will set to `true` once `initialValue` will be replaced with stored in chrome.storage
  */
-function useChromeStorageLocal(key, initialValue) {
-  return useChromeStorage(key, initialValue, 'local');
+function useStorageLocal(key, initialValue) {
+  return useStorage(key, initialValue, 'local');
 }
 
 /**
@@ -29,8 +29,8 @@ function useChromeStorageLocal(key, initialValue) {
  *      `error` - will contain error appeared in storage. if isPersistent is true, there will be an empty string
  *      `isInitialStateResolved` - will set to `true` once `initialValue` will be replaced with stored in chrome.storage
  */
-function useChromeStorageSync(key, initialValue) {
-  return useChromeStorage(key, initialValue, 'sync');
+function useStorageSync(key, initialValue) {
+  return useStorage(key, initialValue, 'sync');
 }
 
 /**
@@ -48,8 +48,8 @@ function useChromeStorageSync(key, initialValue) {
  *      `error` - will contain error appeared in storage. if isPersistent is true, there will be an empty string
  *      `isInitialStateResolved` - will set to `true` once `initialValue` will be replaced with stored in chrome.storage
  */
-function useChromeStorageSession(key, initialValue) {
-  return useChromeStorage(key, initialValue, 'session');
+function useStorageSession(key, initialValue) {
+  return useStorage(key, initialValue, 'session');
 }
 
 /**
@@ -59,10 +59,10 @@ function useChromeStorageSession(key, initialValue) {
  * @param {string} key - they key name in chrome's storage. Nested keys are not supported
  * @param {*} [initialValue] - default value to use
  * @returns {function(): [any, (value: any) => void, boolean, string, boolean]}
- *          - useChromeStorageLocal hook which may be used across extension's components/pages
+ *          - useStorageLocal hook which may be used across extension's components/pages
  */
-function createChromeStorageStateHookLocal(key, initialValue) {
-  return createChromeStorageStateHook(key, initialValue, 'local');
+function createStorageStateHookLocal(key, initialValue) {
+  return createStorageStateHook(key, initialValue, 'local');
 }
 
 /**
@@ -72,10 +72,10 @@ function createChromeStorageStateHookLocal(key, initialValue) {
  * @param {string} key - they key name in chrome's storage. Nested keys are not supported
  * @param {*} [initialValue] - default value to use
  * @returns {function(): [any, (value: any) => void, boolean, string, boolean]}
- *          - useChromeStorageSync hook which may be used across extension's components/pages
+ *          - useStorageSync hook which may be used across extension's components/pages
  */
-function createChromeStorageStateHookSync(key, initialValue) {
-  return createChromeStorageStateHook(key, initialValue, 'sync');
+function createStorageStateHookSync(key, initialValue) {
+  return createStorageStateHook(key, initialValue, 'sync');
 }
 
 /**
@@ -88,17 +88,17 @@ function createChromeStorageStateHookSync(key, initialValue) {
  * @param {string} key - they key name in chrome's storage. Nested keys are not supported
  * @param {*} [initialValue] - default value to use
  * @returns {function(): [any, (value: any) => void, boolean, string, boolean]}
- *          - useChromeStorageSession hook which may be used across extension's components/pages
+ *          - useStorageSession hook which may be used across extension's components/pages
  */
-function createChromeStorageStateHookSession(key, initialValue) {
-  return createChromeStorageStateHook(key, initialValue, 'session');
+function createStorageStateHookSession(key, initialValue) {
+  return createStorageStateHook(key, initialValue, 'session');
 }
 
 export {
-  useChromeStorageLocal,
-  useChromeStorageSync,
-  useChromeStorageSession,
-  createChromeStorageStateHookLocal,
-  createChromeStorageStateHookSync,
-  createChromeStorageStateHookSession,
+  useStorageLocal,
+  useStorageSync,
+  useStorageSession,
+  createStorageStateHookLocal,
+  createStorageStateHookSync,
+  createStorageStateHookSession,
 };

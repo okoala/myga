@@ -1,16 +1,12 @@
 import { useCallback, useEffect } from 'react';
-import useChromeStorage from './useChromeStorage';
+import useStorage from './useStorage';
 
-export default function createChromeStorageStateHook(
-  key,
-  initialValue,
-  storageArea,
-) {
-  const consumers = [];
+export default function createStorageStateHook(key, initialValue, storageArea) {
+  const consumers: any[] = [];
 
-  return function useCreateChromeStorageHook() {
+  return function useCreateStorageHook() {
     const [value, setValue, isPersistent, error, isInitialStateResolved] =
-      useChromeStorage(key, initialValue, storageArea);
+      useStorage(key, initialValue, storageArea);
 
     const setValueAll = useCallback(newValue => {
       for (const consumer of consumers) {

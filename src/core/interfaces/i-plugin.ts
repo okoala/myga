@@ -18,7 +18,7 @@ export type SidepanelItemRegistyOption = {
   title: string;
   icon: React.ReactNode | string;
   description?: string;
-  RenderComponent: React.FC<any> | React.ReactNode;
+  RenderComponent: React.FC<any>;
 };
 
 export type SidepanelFooterItemRegistyOption = {

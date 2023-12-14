@@ -10,8 +10,8 @@ import {
 export class SidepanelPluginManager {
   private _configuration!: Configuration;
   private _render!: React.FC<any>;
-  private _sidepanels!: SidepanelItemRegistyOption[];
-  private _footers!: SidepanelFooterItemRegistyOption[];
+  private _sidepanels: SidepanelItemRegistyOption[] = [];
+  private _footers: SidepanelFooterItemRegistyOption[] = [];
 
   registerSidepanelRender = (render: SidepanelRenderRegistyOption) => {
     this._render = render.RenderComponent;

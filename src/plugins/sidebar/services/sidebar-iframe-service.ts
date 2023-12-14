@@ -4,6 +4,8 @@ import { sidepanelPage } from '@manifest';
 import { getRootContaner } from '@lib/dom';
 
 export class SidebarIframeService {
+  private _iframe!: HTMLIFrameElement;
+
   private _getStyles() {
     return `
       #${sidebarIframeId} {
@@ -40,10 +42,22 @@ export class SidebarIframeService {
     style.textContent = this._getStyles();
     rootContainer.appendChild(style);
     // 创建 iframe
-    const iframe = document.createElement('iframe');
-    iframe.src = getPageURL(sidepanelPage);
-    iframe.id = sidebarIframeId;
-    rootContainer.appendChild(iframe);
+    this._iframe = document.createElement('iframe');
+    this._iframe.src = getPageURL(sidepanelPage);
+    this._iframe.id = sidebarIframeId;
+    rootContainer.appendChild(this._iframe);
+
+    this._iframe.onload = () => {
+      this.show();
+    };
+  }
+
+  show() {
+    this._iframe.classList.add('show');
+  }
+
+  hide() {
+    this._iframe.classList.remove('show');
   }
 }
 

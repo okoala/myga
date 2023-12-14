@@ -8,7 +8,7 @@ import { storage } from './storage';
  * @param {'local'|'sync'|'session'} storageArea
  * @returns {[*, function(*= any): void, boolean, string, boolean]}
  */
-export default function useChromeStorage(key, initialValue, storageArea) {
+export default function useStorage(key, initialValue, storageArea = 'local') {
   const [INITIAL_VALUE] = useState(() => {
     return typeof initialValue === 'function' ? initialValue() : initialValue;
   });
