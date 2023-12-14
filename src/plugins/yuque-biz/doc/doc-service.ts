@@ -6,11 +6,14 @@ export class DocService {
     const book = await bookService.safeGetUserOkrrrBook();
     const bookConfig = AppConfig.user.repo;
     const mine = await userService.getMine();
-    let doc = await yuqueApi.doc.getDocDetail(
-      docSlug,
-      bookConfig.slug,
-      mine.login,
-    );
+    let doc;
+    try {
+      doc = await yuqueApi.doc.getDocDetail(
+        docSlug,
+        bookConfig.slug,
+        mine.login,
+      );
+    } catch (err) {}
     // 如果没有文档，就默认创建个
     if (!doc) {
       doc = await yuqueApi.doc.createDoc(book.id, 'Table', docSlug, docTitle);

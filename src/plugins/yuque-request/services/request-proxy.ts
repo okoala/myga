@@ -20,7 +20,7 @@ export function proxyRequest(data: MapT<any>) {
 }
 
 export async function request(data: MapT<any>) {
-  // 如果缓存
+  // 如果缓存, 单位是秒
   if (data.config.cache) {
     let key;
     // 根据参数生成 key
@@ -31,7 +31,7 @@ export async function request(data: MapT<any>) {
     let cache = cacheData ? JSON.parse(cacheData) : null;
     // 如果缓存超时了，就重新获取数据
     const now = new Date().getTime();
-    if (!cache || now - cache.cachedAt > data.config.cache) {
+    if (!cache || now - cache.cachedAt > data.config.cache * 1000) {
       delete data.config.cache;
       // 为了效率, 有缓存的情况下，还是先读一次缓存，等下次刷新页面后再用新的数据
       if (cache) {

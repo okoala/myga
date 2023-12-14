@@ -23,6 +23,7 @@ export class DocApi {
           status: 1,
           title: docTitle || getDefaultTitle(docType),
           type: docType,
+          public: 0, // 仅自己可见
         },
       },
     });

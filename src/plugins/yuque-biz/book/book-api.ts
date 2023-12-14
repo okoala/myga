@@ -35,6 +35,7 @@ export class BookApi {
           name: book.name,
           slug: book.slug || getDefaultBookSlug(),
           description: book.description || '',
+          public: 0, // 仅自己可见
         },
       },
     });

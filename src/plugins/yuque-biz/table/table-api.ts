@@ -20,7 +20,7 @@ export class TableApi {
     return res;
   }
 
-  async getTable(docId: number) {
+  async getTable(docId: number, sheetId: string) {
     const res: any = await request({
       url: `/api/modules/table/doc/TableController/show`,
       config: {
@@ -30,7 +30,7 @@ export class TableApi {
         data: {
           docId,
           docType: 'Doc',
-          sheetId: null,
+          sheetId,
         },
       },
     });
