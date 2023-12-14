@@ -30,19 +30,25 @@ export class AppSidepanel implements IApp {
 
     for (const pluginInstance of pluginInstances) {
       // 自定义配置渲染页
-      if (pluginInstance.registerSidepanel) {
-        this.pluginMananger?.registerSidepanel.call(
+      if (pluginInstance.registerSidepanelRender) {
+        this.pluginMananger?.registerSidepanelRender.call(
           pluginInstance,
-          pluginInstance.registerSidepanel(),
+          pluginInstance.registerSidepanelRender(),
+        );
+      }
+
+      if (pluginInstance.registerSidepanelItem) {
+        this.pluginMananger?.registerSidepanelItem.call(
+          pluginInstance,
+          pluginInstance.registerSidepanelItem(),
           this.configuration,
         );
       }
 
-      // 自定义配置渲染页
-      if (pluginInstance.registerSidepanelFooter) {
-        this.pluginMananger?.registerSidepanelFooter.call(
+      if (pluginInstance.registerSidepanelFooterItem) {
+        this.pluginMananger?.registerSidepanelFooterItem.call(
           pluginInstance,
-          pluginInstance.registerSidepanelFooter(),
+          pluginInstance.registerSidepanelFooterItem(),
         );
       }
     }

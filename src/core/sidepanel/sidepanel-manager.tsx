@@ -1,27 +1,38 @@
 import React from 'react';
 import { Configuration } from '@core/configuration';
-import { SidepanelRegistyOption } from '../interfaces/i-plugin';
-import { Sidebar } from './components/sidebar';
+import {
+  SidepanelFooterItemRegistyOption,
+  SidepanelItemRegistyOption,
+  SidepanelRenderRegistyOption,
+} from '../interfaces/i-plugin';
 
 // 配置管理
 export class SidepanelPluginManager {
   private _configuration!: Configuration;
-  private _sidepanels: any;
-  private _footers!: React.FC<any>[];
+  private _render!: React.FC<any>;
+  private _sidepanels!: SidepanelItemRegistyOption[];
+  private _footers!: SidepanelFooterItemRegistyOption[];
 
-  registerSidepanel = (
-    sidepanel: SidepanelRegistyOption,
+  registerSidepanelRender = (render: SidepanelRenderRegistyOption) => {
+    this._render = render.RenderComponent;
+  };
+
+  registerSidepanelItem = (
+    sidepanel: SidepanelItemRegistyOption,
     configuration: Configuration,
   ) => {
     this._sidepanels.push(sidepanel);
     this._configuration = configuration;
   };
 
-  registerSidepanelFooter = (footer: React.FC<any>) => {
+  registerSidepanelFooterItem = (footer: SidepanelFooterItemRegistyOption) => {
     this._footers.push(footer);
   };
 
   getRender = () => {
-    return <Sidebar navItems={this._sidepanels} footerItems={this._footers} />;
+    const RenderComponet = this._render;
+    return (
+      <RenderComponet navItems={this._sidepanels} footerItems={this._footers} />
+    );
   };
 }

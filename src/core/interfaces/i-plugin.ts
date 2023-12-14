@@ -9,8 +9,21 @@ export type ContentRegistyOption = {
   RenderComponent: React.FC<any>;
 };
 
-export type SidepanelRegistyOption = {
+export type SidepanelRenderRegistyOption = {
   RenderComponent: React.FC<any>;
+};
+
+export type SidepanelItemRegistyOption = {
+  // 侧边栏名称
+  title: string;
+  icon: React.ReactNode | string;
+  description?: string;
+  RenderComponent: React.FC<any> | React.ReactNode;
+};
+
+export type SidepanelFooterItemRegistyOption = {
+  // 底部名称
+  RenderComponent: React.FC<any> | React.ReactNode;
 };
 
 export type BackgroundMessagerRegistyOption = {
@@ -34,9 +47,11 @@ export interface IPlugin {
   // 注册内容渲染
   registerContentRender?(): ContentRegistyOption;
   // 注册侧边栏渲染
-  registerSidepanel?(): SidepanelRegistyOption;
+  registerSidepanelRender?(): SidepanelRenderRegistyOption;
   // 注册侧边栏渲染
-  registerSidepanelFooter?(): React.FC<any>;
+  registerSidepanelItem?(): SidepanelItemRegistyOption;
+  // 注册侧边栏渲染
+  registerSidepanelFooterItem?(): SidepanelFooterItemRegistyOption;
   // 注册背景消息
   registerBackgroundMessager?(): BackgroundMessagerRegistyOption;
 }

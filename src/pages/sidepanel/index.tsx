@@ -4,12 +4,12 @@ import { AppMain } from './main';
 
 refreshOnUpdate('core');
 refreshOnUpdate('plugins');
-refreshOnUpdate('pages/settings');
+refreshOnUpdate('pages/sidepanel');
 
 function init() {
-  const appContainer = document.querySelector('#app-container');
+  const appContainer = document.querySelector('#app-sidepanel-container');
   if (!appContainer) {
-    throw new Error('Can not find #app-container');
+    throw new Error('Can not find #app-sidepanel-container');
   }
   const root = createRoot(appContainer);
   root.render(<AppMain />);
