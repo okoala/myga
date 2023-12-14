@@ -1,4 +1,7 @@
-import packageJson from './package.json';
+import packageJson from '../package.json';
+
+export const optionsPage = 'src/pages/settings/index.html';
+export const sidepanelPage = 'src/pages/sidepanel/index.html';
 
 /**
  * After changing, please reload the extension at `chrome://extensions`
@@ -20,7 +23,7 @@ const manifest: chrome.runtime.ManifestV3 = {
     'scripting',
     'sidePanel',
   ],
-  options_page: 'src/pages/settings/index.html',
+  options_page: optionsPage,
   background: {
     service_worker: 'src/pages/background/index.js',
     type: 'module',
@@ -41,7 +44,7 @@ const manifest: chrome.runtime.ManifestV3 = {
   web_accessible_resources: [
     {
       resources: [
-        'src/pages/sidepanel/index.html',
+        sidepanelPage,
         'assets/js/*.js',
         'assets/css/*.css',
         'okrrr-128.png',
@@ -51,7 +54,7 @@ const manifest: chrome.runtime.ManifestV3 = {
     },
   ],
   side_panel: {
-    default_path: 'src/pages/sidepanel/index.html',
+    default_path: sidepanelPage,
   },
 };
 

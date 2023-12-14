@@ -21,3 +21,7 @@ export function waitForElement(selector) {
 export function insertAfter(newNode, existingNode) {
   existingNode.parentNode.insertBefore(newNode, existingNode.nextSibling);
 }
+
+export function getRootContaner() {
+  return document.querySelector('#okrrr-extension-root-container')!.shadowRoot!;
+}

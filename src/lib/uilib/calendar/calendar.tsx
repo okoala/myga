@@ -7,6 +7,7 @@ import classNames from 'classnames';
 import { Calendar as AntdCalendar, Col, Radio, Row, Select } from 'antd';
 import type { CalendarProps } from 'antd';
 import _styles from './calendar.less';
+import { getRootContaner } from '@lib/dom';
 
 const useStyle = createStyles(({ token, css, cx }) => {
   const lunar = css`
@@ -206,9 +207,9 @@ export const Calendar: React.FC = () => {
                     popupMatchSelectWidth={false}
                     className="my-year-select"
                     getPopupContainer={() => {
-                      return document
-                        .querySelector('#okrrr-extension-root-container')!
-                        .shadowRoot!.querySelector('.okrrr-todo-container')!;
+                      return getRootContaner().querySelector(
+                        '.okrrr-todo-container',
+                      )!;
                     }}
                     value={year}
                     options={options}
@@ -225,9 +226,9 @@ export const Calendar: React.FC = () => {
                     value={month}
                     options={monthOptions}
                     getPopupContainer={() => {
-                      return document
-                        .querySelector('#okrrr-extension-root-container')!
-                        .shadowRoot!.querySelector('.okrrr-todo-container')!;
+                      return getRootContaner().querySelector(
+                        '.okrrr-todo-container',
+                      )!;
                     }}
                     onChange={newMonth => {
                       const now = value.clone().month(newMonth);

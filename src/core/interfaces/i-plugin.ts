@@ -14,7 +14,7 @@ export type SidepanelRenderRegistyOption = {
 };
 
 export type SidepanelItemRegistyOption = {
-  // 侧边栏名称
+  id: string;
   title: string;
   icon: React.ReactNode | string;
   description?: string;
@@ -27,6 +27,11 @@ export type SidepanelFooterItemRegistyOption = {
 };
 
 export type BackgroundMessagerRegistyOption = {
+  name: string;
+  handler: (...args: any[]) => Promise<any>;
+};
+
+export type ContentMessagerRegistyOption = {
   name: string;
   handler: (...args: any[]) => Promise<any>;
 };
@@ -52,8 +57,10 @@ export interface IPlugin {
   registerSidepanelItem?(): SidepanelItemRegistyOption;
   // 注册侧边栏渲染
   registerSidepanelFooterItem?(): SidepanelFooterItemRegistyOption;
-  // 注册背景消息
+  // 注册 background 消息
   registerBackgroundMessager?(): BackgroundMessagerRegistyOption;
+  // 注册 content 消息
+  registerContentMessager?(): ContentMessagerRegistyOption;
 }
 
 export interface IPluginCtor {

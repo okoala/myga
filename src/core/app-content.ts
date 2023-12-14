@@ -47,6 +47,12 @@ export class AppContent {
           this.configuration,
         );
       }
+      if (pluginInstance.registerContentMessager) {
+        this.contentPluginMananger?.registerMessager.call(
+          pluginInstance,
+          pluginInstance.registerContentMessager(),
+        );
+      }
     }
   }
 

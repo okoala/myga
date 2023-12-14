@@ -4,7 +4,7 @@ import { createRoot } from 'react-dom/client';
 import refreshOnUpdate from 'virtual:reload-on-update-in-view';
 import { QuickMenuContentPlugin } from '@plugins/yuque-quick-menu/quick-menu-content-plugin';
 import { TranslateYoutubeContentPlugin } from '@plugins/youtube-translate/translate-yt-content-plugin';
-import { TodoContentPlugin } from '@plugins/todo/todo-content-plugin';
+import { SidebarContentPlugin } from '@plugins/sidebar/sidebar-content-plugin';
 
 refreshOnUpdate('core');
 refreshOnUpdate('plugins');
@@ -25,7 +25,7 @@ const app = AppContent.init({
   plugins: [
     QuickMenuContentPlugin,
     TranslateYoutubeContentPlugin,
-    TodoContentPlugin,
+    SidebarContentPlugin,
   ],
 });
 

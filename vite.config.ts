@@ -7,14 +7,14 @@ import makeManifest from './scripts/plugins/make-manifest';
 import customDynamicImport from './scripts/plugins/custom-dynamic-import';
 import addHmr from './scripts/plugins/add-hmr';
 import watchRebuild from './scripts/plugins/watch-rebuild';
-import manifest from './manifest';
+import manifest from './src/manifest';
 
 const rootDir = resolve(__dirname);
 const srcDir = resolve(rootDir, 'src');
 const pagesDir = resolve(srcDir, 'pages');
 const assetsDir = resolve(srcDir, 'assets');
 const outDir = resolve(rootDir, 'dist');
-const publicDir = resolve(rootDir, 'public');
+const publicDir = resolve(assetsDir, 'logo');
 
 const isDev = process.env.__DEV__ === 'true';
 const isProduction = !isDev;
@@ -32,6 +32,7 @@ const viteConfig = {
       '@lib': resolve(srcDir, 'lib'),
       '@pkg': resolve(rootDir, 'package.json'),
       '@config': resolve(srcDir, 'config.ts'),
+      '@manifest': resolve(srcDir, 'manifest.ts'),
     },
   },
   plugins: [
@@ -59,6 +60,7 @@ const viteConfig = {
         content: resolve(pagesDir, 'content', 'index.ts'),
         background: resolve(pagesDir, 'background', 'index.ts'),
         contentStyle: resolve(pagesDir, 'content', 'style.less'),
+        sidepanel: resolve(pagesDir, 'sidepanel', 'index.html'),
       },
       output: {
         entryFileNames: 'src/pages/[name]/index.js',

@@ -3,7 +3,7 @@ import { BackgroundMessagerRegistyOption } from '../interfaces/i-plugin';
 type MessageSender = chrome.runtime.MessageSender;
 type SendResponse = (response: any) => void;
 
-export interface RequestMessage<T> {
+export interface BackgroundMessage<T> {
   action: string;
   data: T;
 }
@@ -20,7 +20,7 @@ export class BackgroundManager {
     // 不能用 async，不然成功返回信息
     chrome.runtime.onMessage.addListener(
       (
-        _request: RequestMessage<any>,
+        _request: BackgroundMessage<any>,
         _sender: MessageSender,
         sendResponse: SendResponse,
       ) => {
@@ -33,6 +33,25 @@ export class BackgroundManager {
             return true;
           }
         }
+
+        // 如果没有发现就透传到 contentScript 中处理
+        chrome.tabs
+          .query({ active: true, lastFocusedWindow: true })
+          .then(tabs => {
+            const tabId = tabs[0].id;
+            if (!tabId) {
+              const err = new Error('no tab found');
+              sendResponse(err);
+              return;
+            }
+            chrome.tabs
+              .sendMessage(tabId, _request)
+              .then(res => {
+                sendResponse(res);
+              })
+              .catch(err => sendResponse(err));
+          })
+          .catch(err => sendResponse(err));
         // 返回true表示监听到消息后执行sendResponse，否则不会执行
         return true;
       },
