@@ -21,14 +21,12 @@ export function TodoHeader(props) {
   }, []);
 
   return (
-    <header>
+    <>
       <style>{styles}</style>
-      <Colorfull color={1}>
-        <div className="okrrr-todo-header">
-          <h1 className="okrrr-todo-header-title">{mine?.name}</h1>
-        </div>
+      <Colorfull className="okrrr-todo-header" color={1}>
+        <h1 className="okrrr-todo-header-title">{mine?.name}</h1>
         <p className="okrrr-todo-header-word">{word}</p>
       </Colorfull>
-    </header>
+    </>
   );
 }
