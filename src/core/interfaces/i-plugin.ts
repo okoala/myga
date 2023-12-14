@@ -9,6 +9,10 @@ export type ContentRegistyOption = {
   RenderComponent: React.FC<any>;
 };
 
+export type SidepanelRegistyOption = {
+  RenderComponent: React.FC<any>;
+};
+
 export type BackgroundMessagerRegistyOption = {
   name: string;
   handler: (...args: any[]) => Promise<any>;
@@ -29,6 +33,10 @@ export interface IPlugin {
   registerSettingRender?(): SettingRegistyOption;
   // 注册内容渲染
   registerContentRender?(): ContentRegistyOption;
+  // 注册侧边栏渲染
+  registerSidepanel?(): SidepanelRegistyOption;
+  // 注册侧边栏渲染
+  registerSidepanelFooter?(): React.FC<any>;
   // 注册背景消息
   registerBackgroundMessager?(): BackgroundMessagerRegistyOption;
 }

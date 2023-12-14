@@ -41,6 +41,7 @@ const manifest: chrome.runtime.ManifestV3 = {
   web_accessible_resources: [
     {
       resources: [
+        'src/pages/sidepanel/index.html',
         'assets/js/*.js',
         'assets/css/*.css',
         'okrrr-128.png',
@@ -49,6 +50,9 @@ const manifest: chrome.runtime.ManifestV3 = {
       matches: ['<all_urls>', '*://*/*'],
     },
   ],
+  side_panel: {
+    default_path: 'src/pages/sidepanel/index.html',
+  },
 };
 
 export default manifest;
