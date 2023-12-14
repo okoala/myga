@@ -27,6 +27,8 @@ export class SidebarIframeService {
         z-index: 2147483645;
         color-scheme: none;
         user-select: none;
+        border-left: 1px solid #eaeaea;
+        box-shadow: 0px 0px 10px rgb(51 51 51 / 10%);
       }
       #${sidebarIframeId}.show {
         display: block;

@@ -26,7 +26,6 @@ export function TodoHeader(props) {
       <Colorfull color={1}>
         <div className="okrrr-todo-header">
           <h1 className="okrrr-todo-header-title">{mine?.name}</h1>
-          <img className="okrrr-todo-header-avatar" src={mine?.avatar_url} />
         </div>
         <p className="okrrr-todo-header-word">{word}</p>
       </Colorfull>
