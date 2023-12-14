@@ -6,6 +6,7 @@ export function TodoTimeline(props) {
     <>
       <style>{styles}</style>
       <div className="okrrr-todo-timeline">
+        <h2 className="okrrr-todo-timeline-title">今日任务</h2>
         <Timeline
           mode={'left'}
           items={[
