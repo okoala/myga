@@ -6,7 +6,7 @@ export function getDefaultDocSlug() {
 }
 
 export function getDefaultBookSlug() {
-  return uid(16);
+  return uid(6);
 }
 
 export function getDefaultTitle(type: DocType) {

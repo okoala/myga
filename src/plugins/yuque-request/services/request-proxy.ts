@@ -33,10 +33,19 @@ export async function request(data: MapT<any>) {
     const now = new Date().getTime();
     if (!cache || now - cache.cachedAt > data.config.cache) {
       delete data.config.cache;
-      if (!cache) cache = {};
-      cache.data = await proxyRequest(data);
-      cache.cachedAt = now;
-      await storage.set(key, JSON.stringify(cache));
+      // 为了效率, 有缓存的情况下，还是先读一次缓存，等下次刷新页面后再用新的数据
+      if (cache) {
+        proxyRequest(data).then(res => {
+          cache.data = res;
+          cache.cachedAt = now;
+          storage.set(key, JSON.stringify(cache));
+        });
+      } else {
+        cache = {};
+        cache.data = await proxyRequest(data);
+        cache.cachedAt = now;
+        storage.set(key, JSON.stringify(cache));
+      }
     }
     return cache.data;
   }

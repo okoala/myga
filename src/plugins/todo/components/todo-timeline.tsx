@@ -1,23 +1,23 @@
 import { Timeline } from 'antd';
 
-export function TodoTimeline() {
+export function TodoTimeline(props) {
   return (
     <Timeline
       mode={'left'}
       items={[
         {
-          label: '2015-09-01',
+          label: '08:12:11',
           children: 'Create a services',
         },
         {
-          label: '2015-09-01 09:12:11',
+          label: '09:12:11',
           children: 'Solve initial network problems',
         },
         {
           children: 'Technical testing',
         },
         {
-          label: '2015-09-01 09:12:11',
+          label: '09:12:11',
           children: 'Network problems being solved',
         },
       ]}

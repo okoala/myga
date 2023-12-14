@@ -41,4 +41,16 @@ export class BookApi {
 
     return res?.data;
   }
+
+  async getBooks() {
+    const res: any = await request({
+      url: '/api/books',
+      config: {
+        cache: 24 * 60 * 60,
+        method: 'GET',
+        data: {},
+      },
+    });
+    return res?.data;
+  }
 }

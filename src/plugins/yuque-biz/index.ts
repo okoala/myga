@@ -4,3 +4,5 @@ export * from './yuque-path';
 export * from './yuque-api';
 export * from './table/process-table';
 export * from './user/user-service';
+export * from './book/book-service';
+export * from './table/table-service';

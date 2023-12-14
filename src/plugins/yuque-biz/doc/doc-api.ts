@@ -1,8 +1,14 @@
 import { request } from '@plugins/yuque-request';
 import { getDefaultDocSlug, getDefaultTitle, getDocFormat } from '../util';
+import { DocType } from '../interfaces/i-doc';
 
 export class DocApi {
-  async createDoc(bookId: number, docType) {
+  async createDoc(
+    bookId: number,
+    docType: DocType,
+    docSlug?: string,
+    docTitle?: string,
+  ) {
     const res: any = await request({
       url: `/api/docs`,
       config: {
@@ -13,9 +19,9 @@ export class DocApi {
           book_id: bookId,
           format: getDocFormat(docType),
           insert_to_catalog: true,
-          slug: getDefaultDocSlug(),
+          slug: docSlug || getDefaultDocSlug(),
           status: 1,
-          title: getDefaultTitle(docType),
+          title: docTitle || getDefaultTitle(docType),
           type: docType,
         },
       },
@@ -29,6 +35,7 @@ export class DocApi {
       url: `/api/docs/${docSlug}`,
       config: {
         method: 'GET',
+        cache: 24 * 60 * 60,
         data: {
           user_login: userLogin,
           book_slug: bookSlug,

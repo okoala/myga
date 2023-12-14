@@ -1,30 +1,33 @@
 import { AppConfig } from '@config';
-import { getTexts, yuqueApi } from '@plugins/yuque-biz';
+import { tableService, getTexts, yuqueApi } from '@plugins/yuque-biz';
+import { todoDocTitle, todoDocSlug } from '../constants';
 
 export class TodoService {
-  private _words: string[] = [];
+  private _table!: any;
 
-  constructor() {
-    this.init();
-  }
-
-  async init() {
+  // 获取激励池
+  async getPiritWords() {
     const piritwords = AppConfig.official.docs.piritwords;
     const res: any = await yuqueApi.table.getRecords(
       piritwords.id,
       piritwords.sheetId,
     );
     if (!res) return;
-    const texts = getTexts(res.records);
-    this._words = texts;
+    return getTexts(res.records);
   }
 
-  getPiritWords() {
-    return this._words;
+  // 获取数据
+  async safeGetData() {
+    this._table = await tableService.safeGetUserOkrrrTable(
+      todoDocSlug,
+      todoDocTitle,
+    );
+    console.log('====', this._table);
+    return this._table;
   }
 
-  getTodayWord() {
-    return this._words[Math.floor(Math.random() * this._words.length)];
+  getTodayWord(words) {
+    return words[Math.floor(Math.random() * words.length)];
   }
 }
 

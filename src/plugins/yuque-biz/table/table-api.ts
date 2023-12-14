@@ -19,4 +19,21 @@ export class TableApi {
     });
     return res;
   }
+
+  async getTable(docId: number) {
+    const res: any = await request({
+      url: `/api/modules/table/doc/TableController/show`,
+      config: {
+        method: 'GET',
+        // 缓存 24 小时
+        cache: 24 * 60 * 60,
+        data: {
+          docId,
+          docType: 'Doc',
+          sheetId: null,
+        },
+      },
+    });
+    return res;
+  }
 }
