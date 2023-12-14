@@ -1,5 +1,6 @@
 import { useStorageLocal } from '@lib/use-storage';
 import styles from './sidebar-nav.less';
+import classnames from 'classnames';
 import { sidebarTabKey } from '../constants';
 
 export function SidebarNav(props) {
@@ -13,8 +14,8 @@ export function SidebarNav(props) {
   return (
     <>
       <style>{styles}</style>
-      <div className="okrrr-sidebar-container">
-        <div className="okrrr-sidebar-header"></div>
+      <div className="okrrr-sidebar-nav-container">
+        <div className="okrrr-sidebar-nav-header"></div>
         <div className="okrrr-sidebar-nav">
           <div className="okrrr-sidebar-nav-items">
             {navItems.map(item => {
@@ -25,7 +26,11 @@ export function SidebarNav(props) {
                   item.icon
                 );
               return (
-                <div className="okrrr-sidebar-nav-item">
+                <div
+                  className={classnames(`okrrr-sidebar-nav-item`, {
+                    'okrrr-sidebar-nav-item-active': tabId === item.id,
+                  })}
+                >
                   <div className="okrrr-sidebar-nav-item-icon">{icon}</div>
                   <span className="okrrr-sidebar-nav-item-title">
                     {item.title}
@@ -35,8 +40,8 @@ export function SidebarNav(props) {
             })}
           </div>
         </div>
-        <div className="okrrr-sidebar-footer">
-          <div className="okrrr-sidebar-footer-items">
+        <div className="okrrr-sidebar-nav-footer">
+          <div className="okrrr-sidebar-nav-footer-items">
             {footerItems.map(item => {
               const { RenderComponent } = item;
               return <RenderComponent />;

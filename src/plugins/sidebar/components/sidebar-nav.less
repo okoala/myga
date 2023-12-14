@@ -1,6 +1,5 @@
-.okrrr-sidebar-container {
+.okrrr-sidebar-nav-container {
   width: 61px;
-  padding-left: 1px;
   height: 100%;
   display: flex;
   justify-content: center;
@@ -18,7 +17,7 @@
     linear-gradient(197deg, #f2e9ed -7.27%, #e9eefb 38.85%, #f0eeea 85.4%);
 }
 
-.okrrr-sidebar-header {
+.okrrr-sidebar-nav-header {
   width: 100%;
   padding: 14px 0;
   column-gap: 7px;
@@ -57,12 +56,17 @@
   align-items: center;
   flex-direction: column;
   justify-content: flex-start;
+  padding: 10px 0;
   width: 100%;
   transition: all 0.1s ease-in-out;
   cursor: pointer;
   user-select: none;
   -webkit-user-drag: none;
   -webkit-tap-highlight-color: transparent;
+}
+
+.okrrr-sidebar-nav-item-active {
+  background-color: rgba(255, 255, 255, 0.4);
 }
 
 .okrrr-sidebar-nav-item-title {
@@ -76,7 +80,7 @@
   height: 26px;
 }
 
-.okrrr-sidebar-footer {
+.okrrr-sidebar-nav-footer {
   width: 100%;
   display: flex;
   justify-content: center;
@@ -86,7 +90,7 @@
   row-gap: 17px;
 }
 
-.okrrr-sidebar-footer-items {
+.okrrr-sidebar-nav-footer-items {
   -webkit-tap-highlight-color: transparent;
   display: flex;
   flex-direction: row;

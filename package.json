@@ -24,6 +24,7 @@
     "ajv-keywords": "^5.1.0",
     "antd": "^5.7.3",
     "antd-style": "^3.6.1",
+    "classnames": "^2.3.2",
     "construct-style-sheets-polyfill": "3.1.0",
     "copy-text-to-clipboard": "^3.2.0",
     "dayjs": "^1.11.1",
