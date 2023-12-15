@@ -1,11 +1,10 @@
-import { CheckOutlined } from '@ant-design/icons';
-import { getRootContaner } from '@lib/dom';
-import { Button, Menu, Popover, Tooltip } from 'antd';
+import { Popover, Tooltip } from 'antd';
 import { useThemeSelect } from '../hooks/use-theme-select';
 import { ThemeSelectEnum } from '../interfaces/i-theme';
 import { NavDay, NavNight, NavSystem } from '@lib/uilib/icon';
-import { useStyles } from './theme.styles';
 import { ButtonIcon } from '@lib/uilib/button';
+import { MenuSelect } from '@lib/uilib/menu-select';
+import { useStyles } from './theme.styles';
 
 export const themeSelectItems = [
   {
@@ -36,26 +35,13 @@ export function Theme() {
         placement="topLeft"
         trigger="click"
         content={
-          <Menu
-            selectedKeys={[themeSelected]}
-            onSelect={({ key }) => selectTheme(key)}
-          >
-            {themeSelectItems.map(item => {
-              return (
-                <Menu.Item key={item.key} style={{ marginBottom: 2 }}>
-                  <span className={styles.themeMenuItem}>
-                    <span className={styles.themeMenuIcon}>{item.icon}</span>
-                    <span className={styles.themeMenuItemName}>
-                      {item.label}
-                    </span>
-                    <span className={styles.themeMenuItemChecked}>
-                      {themeSelected === item.key && <CheckOutlined />}
-                    </span>
-                  </span>
-                </Menu.Item>
-              );
-            })}
-          </Menu>
+          <MenuSelect
+            defaultValue={themeSelected}
+            items={themeSelectItems}
+            onChange={key => {
+              selectTheme(key);
+            }}
+          />
         }
       >
         <span className={styles.themeBtn}>
