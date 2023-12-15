@@ -53,7 +53,11 @@ export function SidebarNav(props) {
           <div className="okrrr-sidebar-nav-footer-items">
             {footerItems.map(item => {
               const { RenderComponent } = item;
-              return <RenderComponent />;
+              return (
+                <div className="okrrr-sidebar-nav-footer-item">
+                  <RenderComponent />
+                </div>
+              );
             })}
           </div>
         </div>
