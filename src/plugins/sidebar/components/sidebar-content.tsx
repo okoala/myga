@@ -1,13 +1,14 @@
 import { useStorageLocal } from '@lib/use-storage';
 import { sidebarTabKey } from '../constants';
-import styles from './sidebar-content.less';
 import { SidepanelItemRegistyOption } from '@core';
+import { useStyles } from './sidebar-content.styles';
 
 type SidebarContentProps = {
   navItems: SidepanelItemRegistyOption[];
 };
 
 export function SidebarContent(props: SidebarContentProps) {
+  const { styles } = useStyles();
   const [tabId, setTabId] = useStorageLocal(
     sidebarTabKey,
     props.navItems[0].id,
@@ -18,9 +19,8 @@ export function SidebarContent(props: SidebarContentProps) {
   )?.RenderComponent;
   return (
     <>
-      <style>{styles}</style>
-      <div className="okrrr-sidebar-content">
-        <div className="okrrr-sidebar-content-render">
+      <div className={styles.content}>
+        <div className={styles.render}>
           {RenderComponent && <RenderComponent />}
         </div>
       </div>

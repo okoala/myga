@@ -1,12 +1,12 @@
 import { Timeline } from 'antd';
-import styles from './todo-timeline.less';
+import { useStyles } from './todo-timeline.styles';
 
 export function TodoTimeline(props) {
+  const { styles } = useStyles();
   return (
     <>
-      <style>{styles}</style>
-      <div className="okrrr-todo-timeline">
-        <h2 className="okrrr-todo-timeline-title">今日任务</h2>
+      <div className={styles.timeline}>
+        <h2 className={styles.title}>今日任务</h2>
         <Timeline
           mode={'left'}
           items={[

@@ -1,10 +1,10 @@
 import { SidebarNav } from './sidebar-nav';
-import styles from './sidebar.less';
 import type {
   SidepanelFooterItemRegistyOption,
   SidepanelItemRegistyOption,
 } from '@core/interfaces/i-plugin';
 import { SidebarContent } from './sidebar-content';
+import { useStyles } from './sidebar.styles';
 
 type SidebarProps = {
   navItems: SidepanelItemRegistyOption[];
@@ -12,10 +12,10 @@ type SidebarProps = {
 };
 
 export function Sidebar(props: SidebarProps) {
+  const { styles } = useStyles();
   return (
     <>
-      <style>{styles}</style>
-      <div className="okrrr-sidebar">
+      <div className={styles.sidebar}>
         <SidebarContent {...props} />
         <SidebarNav {...props} />
       </div>

@@ -1,7 +1,7 @@
 import { Progress } from 'antd';
-import styles from './todo-taskcard.less';
 import dayjs from 'dayjs';
 import { useMemo } from 'react';
+import { useStyles } from './todo-taskcard.styles';
 
 const chineseWeekOfDay = {
   1: '一',
@@ -14,6 +14,7 @@ const chineseWeekOfDay = {
 };
 
 export function TodoTaskcard(props) {
+  const { styles } = useStyles();
   const date = useMemo(() => {
     const d = dayjs();
     return {
@@ -26,15 +27,14 @@ export function TodoTaskcard(props) {
 
   return (
     <>
-      <style>{styles}</style>
-      <div className="okrrr-todo-taskcard-wrap">
-        <div className="okrrr-todo-taskcard">
-          <div className="okrrr-todo-taskcard-date">
+      <div className={styles.wrap}>
+        <div className={styles.card}>
+          <div className={styles.date}>
             今天是 {date.year}年{date.month}月{date.monthOfDay}日, 星期
             {date.weekOfDay}
           </div>
-          <div className="okrrr-todo-taskcard-main">
-            <div className="okrrr-todo-taskcard-graph">
+          <div className={styles.main}>
+            <div className={styles.graph}>
               <Progress
                 type="circle"
                 percent={0}
@@ -42,16 +42,10 @@ export function TodoTaskcard(props) {
                 size="small"
               />
             </div>
-            <div className="okrrr-todo-taskcard-status">
-              <p className="okrrr-todo-taskcard-done">
-                <span className="okrrr-todo-dot">・</span>已完成了 3 个任务
-              </p>
-              <p className="okrrr-todo-taskcard-missed">
-                <span className="okrrr-todo-dot">・</span>2 个任务已经超期
-              </p>
-              <p className="okrrr-todo-taskcard-waiting">
-                <span className="okrrr-todo-dot">・</span>1 个任务需要处理
-              </p>
+            <div className={styles.status}>
+              <p className={styles.statusDone}>・已完成了 3 个任务</p>
+              <p className={styles.statusMissed}>・2 个任务已经超期</p>
+              <p className={styles.statusWaiting}>・1 个任务需要处理</p>
             </div>
           </div>
         </div>

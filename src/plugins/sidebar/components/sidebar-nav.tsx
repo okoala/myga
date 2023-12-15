@@ -1,11 +1,11 @@
 import { useStorageLocal } from '@lib/use-storage';
 import { CloseOutlined } from '@ant-design/icons';
-import styles from './sidebar-nav.less';
-import classnames from 'classnames';
 import { sidebarTabKey } from '../constants';
 import { sidebarService } from '../services/sidebar-service';
+import { useStyles } from './sidebar-nav.styles';
 
 export function SidebarNav(props) {
+  const { styles, cx } = useStyles();
   const [tabId, setTabId] = useStorageLocal(
     sidebarTabKey,
     props.navItems[0].id,
@@ -15,18 +15,17 @@ export function SidebarNav(props) {
   const footerItems = props.footerItems || [];
   return (
     <>
-      <style>{styles}</style>
-      <div className="okrrr-sidebar-nav-container">
-        <div className="okrrr-sidebar-nav-header">
+      <div className={styles.container}>
+        <div className={styles.header}>
           <span
-            className="okrrr-sidebar-nav-header-close"
+            className={styles.close}
             onClick={() => sidebarService.closeSidepanel()}
           >
             <CloseOutlined />
           </span>
         </div>
-        <div className="okrrr-sidebar-nav">
-          <div className="okrrr-sidebar-nav-items">
+        <div className={styles.nav}>
+          <div className={styles.navItems}>
             {navItems.map(item => {
               const icon =
                 typeof item.icon === 'string' ? (
@@ -36,25 +35,23 @@ export function SidebarNav(props) {
                 );
               return (
                 <div
-                  className={classnames(`okrrr-sidebar-nav-item`, {
-                    'okrrr-sidebar-nav-item-active': tabId === item.id,
+                  className={cx(styles.navItem, {
+                    [styles.navItemActive]: tabId === item.id,
                   })}
                 >
-                  <div className="okrrr-sidebar-nav-item-icon">{icon}</div>
-                  <span className="okrrr-sidebar-nav-item-title">
-                    {item.title}
-                  </span>
+                  <div className={styles.navItemIcon}>{icon}</div>
+                  <span className={styles.navItemTitle}>{item.title}</span>
                 </div>
               );
             })}
           </div>
         </div>
-        <div className="okrrr-sidebar-nav-footer">
-          <div className="okrrr-sidebar-nav-footer-items">
+        <div className={styles.navFooter}>
+          <div className={styles.navFooterItems}>
             {footerItems.map(item => {
               const { RenderComponent } = item;
               return (
-                <div className="okrrr-sidebar-nav-footer-item">
+                <div className={styles.navFooterItem}>
                   <RenderComponent />
                 </div>
               );

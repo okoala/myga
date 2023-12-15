@@ -1,10 +1,11 @@
 import { AppContent } from '@core/app-content';
-import { StyleProvider } from '@ant-design/cssinjs';
+import { StyleProvider } from 'antd-style';
 import { createRoot } from 'react-dom/client';
 import refreshOnUpdate from 'virtual:reload-on-update-in-view';
 import { QuickMenuContentPlugin } from '@plugins/yuque-quick-menu/quick-menu-content-plugin';
 import { TranslateYoutubeContentPlugin } from '@plugins/youtube-translate/translate-yt-content-plugin';
 import { SidebarContentPlugin } from '@plugins/sidebar/sidebar-content-plugin';
+import { AntdConfigProvider } from '@lib/antd/antd-config-provider';
 
 refreshOnUpdate('core');
 refreshOnUpdate('plugins');
@@ -16,7 +17,7 @@ root.id = 'okrrr-extension-root-container';
 document.body.append(root);
 
 const rootIntoShadow = document.createElement('div');
-rootIntoShadow.id = 'shadow-root';
+rootIntoShadow.id = 'okrrr-shadow-root';
 
 const shadowRoot = root.attachShadow({ mode: 'open' });
 shadowRoot.appendChild(rootIntoShadow);
@@ -32,5 +33,7 @@ const app = AppContent.init({
 // antd5 针对 shadow dom 的支持
 // https://ant-design.gitee.io/docs/react/compatible-style-cn#shadow-dom-%E5%9C%BA%E6%99%AF
 createRoot(rootIntoShadow).render(
-  <StyleProvider container={shadowRoot}>{app.start()}</StyleProvider>,
+  <StyleProvider container={shadowRoot}>
+    <AntdConfigProvider>{app.start()}</AntdConfigProvider>
+  </StyleProvider>,
 );

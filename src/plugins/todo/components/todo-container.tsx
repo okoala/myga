@@ -1,10 +1,10 @@
-import styles from './todo-container.less';
+import { useStyles } from './todo-container.styles';
 
 export function TodoContainer(props) {
+  const { styles } = useStyles();
   return (
     <>
-      <style>{styles}</style>
-      <div className="okrrr-todo-container">{props.children}</div>
+      <div className={styles.container}>{props.children}</div>
     </>
   );
 }

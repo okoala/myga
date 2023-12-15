@@ -1,13 +1,13 @@
-import styles from './float-button.less';
+import { useStyles } from './float-button.styles';
 
 export function FloatButton(props) {
+  const { styles } = useStyles();
   const { icon, ...otherProps } = props;
   return (
     <>
-      <style>{styles}</style>
-      <div className="okrrr-float-btn-box" {...otherProps}>
-        <div className="okrrr-float-btn">
-          <span className="okrrr-float-btn-icon">{props.icon}</span>
+      <div className={styles.floatBox} {...otherProps}>
+        <div className={styles.floatBtn}>
+          <span className={styles.floatBtnIcon}>{props.icon}</span>
         </div>
       </div>
     </>

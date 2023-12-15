@@ -6,10 +6,10 @@ import SheetIcon from '@assets/icons/sheet.svg?react';
 import BoardIcon from '@assets/icons/board.svg?react';
 import TableIcon from '@assets/icons/table.svg?react';
 
-import styles from './quick-menus.less';
 import { useMemo } from 'react';
 import { DocService } from '../services/doc-service';
 import { DocType } from '../../yuque-biz/interfaces/i-doc';
+import { useStyles } from './quick-menus.styles';
 
 type MenuType = {
   name: string;
@@ -22,6 +22,7 @@ type MenuType = {
 };
 
 export function QuickMenus() {
+  const { styles } = useStyles();
   const menus: MenuType[] = [
     {
       name: '文档',
@@ -51,8 +52,7 @@ export function QuickMenus() {
 
   return (
     <>
-      <style>{styles}</style>
-      <Menu className="myga-quick-menus" selectable={false}>
+      <Menu className={styles.menus} selectable={false}>
         {menus.map((item, index) => {
           if (item.name === 'divide') {
             return <Menu.Divider key={index} />;
@@ -66,7 +66,7 @@ export function QuickMenus() {
                 docService.createDocument(item.type);
               }}
             >
-              {Icon && <Icon className="myga-quick-menus-icon" />}
+              {Icon && <Icon className={styles.icon} />}
               新建{item.name}
             </Menu.Item>
           );
