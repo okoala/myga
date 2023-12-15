@@ -1,9 +1,10 @@
 import { IUser, userService } from '@plugins/yuque-biz';
 import { useEffect, useState } from 'react';
-import styles from './mine.less';
 import { Tooltip } from 'antd';
+import { useStyles } from './mine.styles';
 
 export function Mine() {
+  const { styles } = useStyles();
   const [mine, setMine] = useState<IUser>();
 
   useEffect(() => {
@@ -16,14 +17,12 @@ export function Mine() {
 
   return (
     <>
-      <style>{styles}</style>
       <Tooltip placement="topRight" title={'去往语雀首页'}>
-        <span
-          className="okrrr-mine-avatar-link"
+        <img
+          className={styles.avatar}
           onClick={() => userService.openHome()}
-        >
-          <img className="okrrr-mine-avatar" src={mine?.avatar_url} />
-        </span>
+          src={mine?.avatar_url}
+        />
       </Tooltip>
     </>
   );
