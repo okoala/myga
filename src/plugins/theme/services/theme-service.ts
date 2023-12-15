@@ -1,37 +1,17 @@
 import { storage } from '@lib/hosts/storage';
-import { ThemeEnum, ThemeSelectEnum } from '../interfaces/i-theme';
+import { ThemeMode } from '../interfaces/i-theme';
 import { themeStoragekey } from '../constants';
 import { EventEmitter } from 'eventemitter3';
 
 export class ThemeService extends EventEmitter {
-  async currentThemeSelect(): Promise<ThemeSelectEnum> {
-    return (await storage.get(themeStoragekey)) || ThemeSelectEnum.default;
-  }
-
-  async isDarkSelect(): Promise<boolean> {
-    return (await this.currentThemeSelect()) === ThemeSelectEnum.dark;
-  }
-
-  async isLightSelect(): Promise<boolean> {
-    return (await this.currentThemeSelect()) === ThemeSelectEnum.default;
-  }
-
-  async isSystemSelect(): Promise<boolean> {
-    return (await this.currentThemeSelect()) === ThemeSelectEnum.system;
-  }
-
-  swithTheme(select: ThemeSelectEnum) {
-    storage.set(themeStoragekey, select);
-
+  swithTheme(theme: ThemeMode) {
     // 如果是选择跟随系统，就监控下系统的变化
-    if (select === ThemeSelectEnum.system) {
+    if (theme === 'auto') {
       this._addSystemThemeChangeEventListener();
       const media = window.matchMedia('(prefers-color-scheme: dark)');
       this._handleSystemThemeChange(media);
     } else {
-      this.emitThemeChange(
-        select === ThemeSelectEnum.dark ? ThemeEnum.dark : ThemeEnum.default,
-      );
+      this.emitThemeChange(theme);
       this._removeSystemThemeChangeEventListener();
     }
   }
@@ -49,11 +29,11 @@ export class ThemeService extends EventEmitter {
   }
 
   private _handleSystemThemeChange = e => {
-    const theme = e.matches ? ThemeEnum.dark : ThemeEnum.default;
+    const theme = e.matches ? 'dark' : 'light';
     this.emitThemeChange(theme);
   };
 
-  emitThemeChange(theme: ThemeEnum) {
+  emitThemeChange(theme: ThemeMode) {
     return this.emit('themeChange', theme);
   }
 }

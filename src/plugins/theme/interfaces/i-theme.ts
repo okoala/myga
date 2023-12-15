@@ -1,10 +1,1 @@
-export enum ThemeEnum {
-  default = 'default',
-  dark = 'dark',
-}
-
-export enum ThemeSelectEnum {
-  default = 'default',
-  dark = 'dark',
-  system = 'system',
-}
+export type ThemeMode = 'auto' | 'dark' | 'light';

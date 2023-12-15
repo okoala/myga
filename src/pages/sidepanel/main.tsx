@@ -1,5 +1,5 @@
 import { AppSidepanel } from '@core/app-sidepanel';
-import { AntdConfigProvider } from '@lib/antd/antd-config-provider';
+import { ThemeProvider } from '@plugins/theme/theme-provider';
 import { MineSidepanelPlugin } from '@plugins/mine/mine-sidepanel-plugin';
 import { SidebarSidepanelPlugin } from '@plugins/sidebar/sidebar-sidepanel-plugin';
 import { ThemeSidepanelPlugin } from '@plugins/theme/theme-sidepanel-plugin';
@@ -15,5 +15,5 @@ export function AppMain() {
     ],
   });
 
-  return <AntdConfigProvider>{app.start()}</AntdConfigProvider>;
+  return <ThemeProvider>{app.start()}</ThemeProvider>;
 }

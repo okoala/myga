@@ -1,33 +1,32 @@
 import { Popover, Tooltip } from 'antd';
-import { useThemeSelect } from '../hooks/use-theme-select';
-import { ThemeSelectEnum } from '../interfaces/i-theme';
+import { useTheme } from '../hooks/use-theme';
 import { NavDay, NavNight, NavSystem } from '@lib/uilib/icon';
 import { ButtonIcon } from '@lib/uilib/button';
 import { MenuSelect } from '@lib/uilib/menu-select';
 import { useStyles } from './theme.styles';
 
-export const themeSelectItems = [
+export const themeItems = [
   {
     label: '默认主题',
-    key: ThemeSelectEnum.default,
+    key: 'light',
     icon: <NavDay />,
   },
   {
     label: '暗黑主题',
-    key: ThemeSelectEnum.dark,
+    key: 'dark',
     icon: <NavNight />,
   },
   {
     label: '跟随系统',
-    key: ThemeSelectEnum.system,
+    key: 'auto',
     icon: <NavSystem />,
   },
 ];
 
 export function Theme() {
   const { styles } = useStyles();
-  const { themeSelected, selectTheme } = useThemeSelect();
-  if (!themeSelected) return null;
+  const { theme, selectTheme } = useTheme();
+  if (!theme) return null;
 
   return (
     <Tooltip title="切换主题">
@@ -36,8 +35,8 @@ export function Theme() {
         trigger="click"
         content={
           <MenuSelect
-            defaultValue={themeSelected}
-            items={themeSelectItems}
+            defaultValue={theme}
+            items={themeItems}
             onChange={key => {
               selectTheme(key);
             }}
@@ -46,7 +45,7 @@ export function Theme() {
       >
         <span className={styles.themeBtn}>
           <ButtonIcon>
-            {themeSelectItems.find(item => item.key === themeSelected)?.icon}
+            {themeItems.find(item => item.key === theme)?.icon}
           </ButtonIcon>
         </span>
       </Popover>
