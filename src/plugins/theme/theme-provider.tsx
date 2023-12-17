@@ -1,13 +1,12 @@
-import { AntdConfigProvider } from './providers/antd-config-provider';
 import { AntdThemeProvider } from './providers/antd-theme-provider';
 import { AntdStyleProvider } from './providers/antd-style-provider';
 
 export function ThemeProvider(props) {
   return (
-    <AntdConfigProvider>
+    <AntdThemeProvider>
       <AntdStyleProvider container={props.container}>
-        <AntdThemeProvider>{props.children}</AntdThemeProvider>
+        {props.children}
       </AntdStyleProvider>
-    </AntdConfigProvider>
+    </AntdThemeProvider>
   );
 }
