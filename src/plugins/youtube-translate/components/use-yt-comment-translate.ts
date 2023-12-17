@@ -16,7 +16,7 @@ export function useYoutubeCommentTranslate() {
       el.className = 'okrrr-translate-result style-scope ytd-comment-renderer';
       el.setAttribute(
         'style',
-        'color: var(--yt-spec-text-primary);font-size: 1.4rem;',
+        'color: var(--yt-spec-text-primary);font-size: 1.4rem;font-weight: 400;',
       );
       insertAfter(el, $commentItemRoot.querySelector('#comment-content'));
     }
@@ -80,9 +80,11 @@ export function useYoutubeCommentTranslate() {
             // 说明是 ytd-item-section-renderer 节点添加了新的节点
             if (
               mutation.target &&
-              (mutation.target as HTMLElement)?.className.includes(
+              ((mutation.target as HTMLElement)?.className.includes(
                 'ytd-item-section-renderer',
-              ) &&
+              ) ||
+                (mutation.target as HTMLElement).localName ===
+                  'ytd-comment-renderer') &&
               mutation.addedNodes.length > 0
             ) {
               createTranslateEntry(mutation.target as HTMLElement);
