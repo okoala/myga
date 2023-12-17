@@ -5,6 +5,7 @@ export const pluginUrls = [
   'http{s}?://*.youtube.com/?*',
   'http{s}?://*.youtube.com/watch?*',
   'http{s}?://*.youtube.com',
+  'http{s}?://*.youtube.com/shorts/:id',
 ];
 export const youtubeCommentCacheKey = 'youtube-comment';
 // 只缓存最多 1000 条的翻译数据

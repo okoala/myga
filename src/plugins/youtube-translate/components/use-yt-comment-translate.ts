@@ -100,6 +100,41 @@ export function useYoutubeCommentTranslate() {
       }
     });
 
+    waitForElement('#content.ytd-engagement-panel-section-list-renderer').then(
+      commentRoot => {
+        if (commentRoot) {
+          observerRef.current = new MutationObserver(
+            (mutationList, observer) => {
+              for (const mutation of mutationList) {
+                // 说明是 ytd-item-section-renderer 节点添加了新的节点
+                if (
+                  mutation.target &&
+                  ((mutation.target as HTMLElement).localName ===
+                    'ytd-comment-thread-renderer' ||
+                    (mutation.target as HTMLElement).localName ===
+                      'ytd-comment-renderer') &&
+                  mutation.addedNodes.length > 0
+                ) {
+                  createTranslateEntry(mutation.target as HTMLElement);
+                  createTranslateResult(mutation.target as HTMLElement);
+                }
+              }
+            },
+          );
+
+          observerRef.current.observe(
+            document.querySelector(
+              '#content.ytd-engagement-panel-section-list-renderer #contents.ytd-item-section-renderer',
+            )!,
+            {
+              subtree: true,
+              childList: true,
+            },
+          );
+        }
+      },
+    );
+
     return () => {
       observerRef.current?.disconnect();
     };
