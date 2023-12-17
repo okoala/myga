@@ -11,11 +11,11 @@ export class TranslateApi {
         method: 'POST',
         data: {
           srcLanguage: language,
-          srcTextList: [text],
+          srcTextList: text.split('. '),
           tgtLanguage: 'zh',
         },
       },
     });
-    return res?.data?.[0] || '';
+    return res?.data ? res?.data.join('。') : '';
   }
 }
