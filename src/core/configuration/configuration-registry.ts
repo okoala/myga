@@ -15,7 +15,7 @@ export class ConfigurationRegistry {
 
   getSchema() {
     return {
-      title: '语雀增强浏览器插件',
+      title: 'okrrr 插件设置',
       type: 'object',
       properties: this._configurationProperties,
     };

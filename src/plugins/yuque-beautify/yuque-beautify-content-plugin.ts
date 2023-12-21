@@ -1,15 +1,15 @@
 import { ContentRegistyOption, IAppContentPlugin } from '@core';
 import { pluginId, pluginName, pluginDesc } from './constants';
-import { YuqueStyle } from './components/yuque-style';
+import { YuqueBeautify } from './components/yuque-beautify';
 
-export class YuqueStyleContentPlugin implements IAppContentPlugin {
+export class YuqueBeautifyContentPlugin implements IAppContentPlugin {
   readonly pluginId = pluginId;
   readonly pluginName = pluginName;
   readonly pluginDesc = pluginDesc;
 
   registerContentRender(): ContentRegistyOption {
     return {
-      RenderComponent: YuqueStyle,
+      RenderComponent: YuqueBeautify,
     };
   }
 }

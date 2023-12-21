@@ -40,7 +40,7 @@ export const SettingPage = (props: IPluginProps) => {
   return (
     <div className="myga-setting-page-wrapper">
       <div className="myga-setting-page-left">
-        <div className="myga-setting-main-title">{'语雀增强浏览器插件'}</div>
+        <div className="myga-setting-main-title">okrrr 插件设置</div>
         <Anchor items={settingMenus} />
       </div>
       <div className="myga-setting-page-right">{settingForms}</div>

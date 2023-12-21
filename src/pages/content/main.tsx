@@ -3,9 +3,9 @@ import { createRoot } from 'react-dom/client';
 import refreshOnUpdate from 'virtual:reload-on-update-in-view';
 import { QuickMenuContentPlugin } from '@plugins/yuque-quick-menu/quick-menu-content-plugin';
 import { TranslateYoutubeContentPlugin } from '@plugins/youtube-translate/translate-yt-content-plugin';
-import { SidebarContentPlugin } from '@plugins/sidebar/sidebar-content-plugin';
+// import { SidebarContentPlugin } from '@plugins/sidebar/sidebar-content-plugin';
 import { ThemeProvider } from '@plugins/theme/theme-provider';
-import { YuqueStyleContentPlugin } from '@plugins/yuque-style/yuque-style-content-plugin';
+import { YuqueBeautifyContentPlugin } from '@plugins/yuque-beautify/yuque-beautify-content-plugin';
 
 refreshOnUpdate('core');
 refreshOnUpdate('plugins');
@@ -27,7 +27,7 @@ const app = AppContent.init({
     // SidebarContentPlugin,
     QuickMenuContentPlugin,
     TranslateYoutubeContentPlugin,
-    YuqueStyleContentPlugin,
+    YuqueBeautifyContentPlugin,
   ],
 });
 

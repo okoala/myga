@@ -1,7 +1,7 @@
 import { useEffect } from 'react';
-import styles from './beautify.less';
+import styles from './yuque-beautify.less';
 
-export function YuqueStyle() {
+export function YuqueBeautify() {
   useEffect(() => {
     const id = 'okrrr-yuque-style';
     if (!document.querySelector('#' + id)) {
