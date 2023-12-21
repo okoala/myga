@@ -1,0 +1,130 @@
+#doc-reader-content #article-title {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Noto Sans',
+    Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji' !important;
+}
+
+.ne-viewer .ne-viewer-body,
+.ne-editor .ne-editor-body {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Noto Sans',
+    Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji' !important;
+  font-weight: 400;
+  -webkit-font-smoothing: subpixel-antialiased;
+  line-height: 1.5;
+  overflow-wrap: break-word;
+  word-wrap: break-word;
+  hyphens: auto;
+  letter-spacing: 0.02em;
+}
+
+.ne-doc-major-editor .ne-editor-body ne-p,
+.ne-doc-major-viewer .ne-viewer-body ne-p {
+  margin-top: 16px !important;
+  margin-bottom: 16px !important;
+}
+
+.ne-engine ne-h1,
+.ne-viewer ne-h1,
+.ne-engine ne-h2,
+.ne-viewer ne-h2,
+.ne-engine ne-h3,
+.ne-viewer ne-h3,
+.ne-engine ne-h4,
+.ne-viewer ne-h4,
+.ne-engine ne-h5,
+.ne-viewer ne-h5,
+.ne-engine ne-h6,
+.ne-viewer ne-h6 {
+  letter-spacing: 0.05em !important;
+  margin-top: 24px !important;
+  margin-bottom: 16px !important;
+  line-height: 1.25 !important;
+}
+
+.ne-engine ne-h1,
+.ne-viewer ne-h1 {
+  padding-bottom: 0.3em !important;
+  font-size: 2em !important;
+}
+
+.ne-engine ne-h2,
+.ne-viewer ne-h2 {
+  padding-bottom: 0.3em !important;
+  font-size: 1.5em !important;
+}
+
+.ne-engine ne-h3,
+.ne-viewer ne-h3 {
+  font-size: 1.25em !important;
+}
+
+.ne-engine ne-h4,
+.ne-viewer ne-h4 {
+  font-size: 1em !important;
+}
+
+.ne-engine ne-h5,
+.ne-viewer ne-h5 {
+  font-size: 0.875em !important;
+}
+
+.ne-engine ne-h6,
+.ne-viewer ne-h6 {
+  font-size: 0.85em !important;
+}
+
+.ne-editor ne-card[data-card-type='block'][data-card-name='hr'],
+.ne-viewer ne-card[data-card-type='block'][data-card-name='hr'] {
+  width: 30%;
+  height: 1px;
+  margin-block-start: 48px;
+  margin-block-end: 47px;
+  margin-inline-start: auto;
+  margin-inline-end: auto;
+  border: 0;
+  /* background-color: hsl(0deg, 0%, 80%); */
+  box-sizing: content-box;
+  overflow: visible;
+  padding: 0 !important;
+}
+
+ne-uli-i .ne-list-symbol > span {
+  transform: scale(0.4) !important;
+}
+
+.ne-engine .ne-spacing-all,
+.ne-viewer .ne-viewer-body .ne-spacing-all {
+  margin-block-start: 12px;
+  margin-block-end: 12px;
+}
+
+.ne-codeblock.code-fz0 .cm-scroller,
+ne-card[data-card-name='codeblock'] {
+  margin-left: 32px;
+}
+
+.ne-toc-view .ne-toc-pin {
+  padding-left: 12px !important;
+}
+
+.ne-toc-normal-view .ne-toc-depth-1,
+.ne-toc-sidebar-hover .ne-toc-view .ne-toc-depth-1,
+.ne-toc-small-view:hover .ne-toc-depth-1,
+.ne-viewer-toc-sidebar-hover .ne-toc-view .ne-toc-depth-1 {
+  padding-left: 10px !important;
+}
+
+.ne-viewer a.ne-link {
+  text-decoration: underline !important;
+}
+
+ne-hole {
+  margin-bottom: 16px !important;
+}
+
+.ne-viewer ne-card[data-card-type='block'] {
+  border-color: transparent !important;
+}
+
+.ne-viewer .codeblock-menu {
+  border-bottom-color: transparent !important;
+}

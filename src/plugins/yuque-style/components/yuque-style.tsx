@@ -1,5 +1,5 @@
 import { useEffect } from 'react';
-import styles from './heti.css';
+import styles from './beautify.css';
 
 export function YuqueStyle() {
   useEffect(() => {
