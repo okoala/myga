@@ -48,7 +48,7 @@ export default function makeManifest(
       if (config.isDev) {
         return;
       }
-      makeManifest(publicDir);
+      makeManifest(distDir);
     },
   };
 }

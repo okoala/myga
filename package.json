@@ -1,7 +1,7 @@
 {
   "name": "okrrr",
   "version": "1.0.0",
-  "description": "让网页浏览体验更方便有趣, 支持语雀、B站、Youtube 等有趣的功能",
+  "description": "让网页浏览体验更方便有趣, 支持语雀、Youtube 等",
   "type": "module",
   "private": true,
   "scripts": {
@@ -9,7 +9,7 @@
     "build:watch": "cross-env __DEV__=true vite build -w --mode development",
     "build:hmr": "rollup --config scripts/reload/rollup.config.mjs",
     "pack-zip": "sh ./scripts/build-zip.sh",
-    "pack-crx": "node ./scripts/build-crx.js && sh ./scripts/zip-crx.sh",
+    "pack-crx": "node ./scripts/build-crx.cjs && sh ./scripts/zip-crx.sh",
     "wss": "node scripts/reload/initReloadServer.js",
     "dev": "tnpm run build:hmr && run-p wss build:watch",
     "lint:js": "eslint . --fix",
@@ -27,6 +27,7 @@
     "classnames": "^2.3.2",
     "construct-style-sheets-polyfill": "3.1.0",
     "copy-text-to-clipboard": "^3.2.0",
+    "crx": "^5.0.1",
     "dayjs": "^1.11.1",
     "eventemitter3": "^4.0.0",
     "lodash": "^4",
@@ -49,6 +50,7 @@
     "@vitejs/plugin-react": "2.2.0",
     "chokidar": "3.5.3",
     "cross-env": "7.0.3",
+    "crx": "^5.0.1",
     "eslint": "^7",
     "eslint-config-prettier": "^9.0.0",
     "eslint-import-resolver-typescript": "^3.6.0",
