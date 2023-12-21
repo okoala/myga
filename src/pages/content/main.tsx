@@ -5,6 +5,7 @@ import { QuickMenuContentPlugin } from '@plugins/yuque-quick-menu/quick-menu-con
 import { TranslateYoutubeContentPlugin } from '@plugins/youtube-translate/translate-yt-content-plugin';
 import { SidebarContentPlugin } from '@plugins/sidebar/sidebar-content-plugin';
 import { ThemeProvider } from '@plugins/theme/theme-provider';
+import { YuqueStyleContentPlugin } from '@plugins/yuque-style/yuque-style-content-plugin';
 
 refreshOnUpdate('core');
 refreshOnUpdate('plugins');
@@ -26,6 +27,7 @@ const app = AppContent.init({
     QuickMenuContentPlugin,
     TranslateYoutubeContentPlugin,
     SidebarContentPlugin,
+    YuqueStyleContentPlugin,
   ],
 });
 
