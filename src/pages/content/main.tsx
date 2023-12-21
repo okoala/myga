@@ -24,9 +24,9 @@ shadowRoot.appendChild(rootIntoShadow);
 
 const app = AppContent.init({
   plugins: [
+    // SidebarContentPlugin,
     QuickMenuContentPlugin,
     TranslateYoutubeContentPlugin,
-    SidebarContentPlugin,
     YuqueStyleContentPlugin,
   ],
 });
