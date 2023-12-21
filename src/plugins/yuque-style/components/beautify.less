@@ -3,8 +3,15 @@
     Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji' !important;
 }
 
+// 评论编辑器
+#lark-mini-editor,
+// 评论
+.yuque-doc-content,
+// 主编辑器和阅读器
 .ne-doc-major-editor,
 .ne-doc-major-viewer {
+  .ne-paragraph-spacing-relax.ne-typography-classic,
+  .ne-viewer.ne-paragraph-spacing-relax.ne-typography-classic .ne-viewer-body,
   .ne-viewer-body,
   .ne-editor-body {
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Noto Sans',
@@ -18,24 +25,19 @@
     letter-spacing: 0.02em;
   }
 
-  .ne-alert-hole,
+  ne-alert-hole,
+  ne-oli,
   .ne-editor-body ne-p,
   .ne-viewer-body ne-p {
-    margin-top: 16px !important;
+    // margin-top: 16px !important;
     margin-bottom: 16px !important;
   }
 
-  .ne-engine ne-h1,
   ne-h1,
-  .ne-engine ne-h2,
   ne-h2,
-  .ne-engine ne-h3,
   ne-h3,
-  .ne-engine ne-h4,
   ne-h4,
-  .ne-engine ne-h5,
   ne-h5,
-  .ne-engine ne-h6,
   ne-h6 {
     letter-spacing: 0.05em !important;
     margin-top: 24px !important;
@@ -43,34 +45,32 @@
     line-height: 1.25 !important;
   }
 
-  .ne-engine ne-h1,
   ne-h1 {
+    margin-top: 34px !important;
     padding-bottom: 0.3em !important;
+    border-bottom: 1px solid var(--yq-yuque-grey-200);
     font-size: 2em !important;
   }
 
-  .ne-engine ne-h2,
   ne-h2 {
+    margin-top: 34px !important;
     padding-bottom: 0.3em !important;
+    border-bottom: 1px solid var(--yq-yuque-grey-200);
     font-size: 1.5em !important;
   }
 
-  .ne-engine ne-h3,
   ne-h3 {
     font-size: 1.25em !important;
   }
 
-  .ne-engine ne-h4,
   ne-h4 {
     font-size: 1em !important;
   }
 
-  .ne-engine ne-h5,
   ne-h5 {
     font-size: 0.875em !important;
   }
 
-  .ne-engine ne-h6,
   ne-h6 {
     font-size: 0.85em !important;
   }
@@ -114,6 +114,7 @@
   a.ne-link,
   ne-link {
     text-decoration: underline !important;
+    text-underline-offset: 0.2rem !important;
     color: var(--lakex-editor-text-link);
   }
 
@@ -146,5 +147,24 @@
   .ͼl.cm-editor,
   .ͼl .cm-gutters {
     background-color: #fafafa !important;
+  }
+
+  .ne-paragraph-spacing-relax.ne-typography-classic.ne-engine ne-p:first-child,
+  .ne-paragraph-spacing-relax.ne-typography-classic.ne-viewer ne-p:first-child,
+  .ne-paragraph-spacing-relax.ne-typography-classic.ne-engine ne-h1:first-child,
+  .ne-paragraph-spacing-relax.ne-typography-classic.ne-viewer ne-h1:first-child,
+  .ne-paragraph-spacing-relax.ne-typography-classic.ne-engine ne-h2:first-child,
+  .ne-paragraph-spacing-relax.ne-typography-classic.ne-viewer ne-h2:first-child,
+  .ne-paragraph-spacing-relax.ne-typography-classic.ne-engine ne-h3:first-child,
+  .ne-paragraph-spacing-relax.ne-typography-classic.ne-viewer ne-h3:first-child,
+  .ne-paragraph-spacing-relax.ne-typography-classic.ne-engine ne-h4:first-child,
+  .ne-paragraph-spacing-relax.ne-typography-classic.ne-viewer ne-h4:first-child,
+  .ne-paragraph-spacing-relax.ne-typography-classic.ne-engine ne-h5:first-child,
+  .ne-paragraph-spacing-relax.ne-typography-classic.ne-viewer ne-h5:first-child,
+  .ne-paragraph-spacing-relax.ne-typography-classic.ne-engine ne-h6:first-child,
+  .ne-paragraph-spacing-relax.ne-typography-classic.ne-viewer
+    ne-h6:first-child {
+    margin-top: 0 !important;
+    margin-bottom: 0 !important;
   }
 }
