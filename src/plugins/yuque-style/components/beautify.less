@@ -28,6 +28,7 @@
   ne-alert-hole,
   .ne-editor-body ne-p,
   .ne-viewer-body ne-p {
+    margin-top: 16px !important;
     margin-bottom: 16px !important;
   }
 
@@ -83,12 +84,11 @@
     font-size: 0.85em !important;
   }
 
-  ne-card[data-card-type='block'][data-card-name='hr'],
   ne-card[data-card-type='block'][data-card-name='hr'] {
     width: 30%;
     height: 1px;
-    margin-block-start: 48px;
-    margin-block-end: 47px;
+    margin-top: 48px;
+    margin-bottom: 47px;
     margin-inline-start: auto;
     margin-inline-end: auto;
     border: 0;
@@ -104,8 +104,8 @@
 
   .ne-engine .ne-spacing-all,
   .ne-viewer-body .ne-spacing-all {
-    margin-block-start: 12px;
-    margin-block-end: 12px;
+    margin-top: 0px;
+    margin-bottom: 0px;
   }
 
   .ne-toc-view .ne-toc-pin {
@@ -175,6 +175,18 @@
     ne-h6:first-child {
       margin-top: 0 !important;
       margin-bottom: 0 !important;
+    }
+  }
+
+  .ne-viewer-body {
+    ne-h1:first-child,
+    ne-h2:first-child,
+    ne-h3:first-child,
+    ne-h4:first-child,
+    ne-h5:first-child,
+    ne-h6:first-child,
+    ne-p:first-child {
+      margin-top: 0 !important;
     }
   }
 
