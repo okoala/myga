@@ -25,6 +25,10 @@
   .ne-toc-normal-view .ne-toc-item a {
     color: var(--yq-yuque-grey-700);
   }
+
+  .ne-toc-normal-view .ne-toc-item.ne-toc-selected a {
+    color: var(--yq-yuque-grey-800);
+  }
 }
 
 // 评论编辑器
@@ -58,10 +62,10 @@
     margin-bottom: 16px !important;
   }
 
-  ne-oli {
-    margin-top: 16px !important;
-    margin-bottom: 8px !important;
-  }
+  // ne-oli {
+  //   margin-top: 16px !important;
+  //   margin-bottom: 8px !important;
+  // }
 
   ne-h1,
   ne-h2,
@@ -151,7 +155,7 @@
     margin-bottom: 16px !important;
   }
 
-  ne-card[data-card-type='block'] {
+  ne-card[data-card-name='codeblock'] {
     border-color: transparent !important;
   }
 
