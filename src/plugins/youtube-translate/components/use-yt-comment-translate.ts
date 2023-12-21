@@ -47,6 +47,8 @@ export function useYoutubeCommentTranslate() {
     span.setAttribute('style', 'cursor: pointer; margin-left: 5px;');
     span.textContent = '翻译';
     span.onclick = () => {
+      if (span.textContent === '翻译中...') return;
+      span.textContent = '翻译中...';
       const $content = $commentItemRoot.querySelector('#content-text');
       const content = $content?.textContent;
       const commentId = getCommentId($commentItemRoot);
@@ -58,6 +60,9 @@ export function useYoutubeCommentTranslate() {
           })
           .then(text => {
             insertTranslateResult($commentItemRoot, text!);
+          })
+          .finally(() => {
+            span.textContent = '翻译';
           });
       }
     };
