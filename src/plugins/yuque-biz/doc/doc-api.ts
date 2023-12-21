@@ -49,4 +49,21 @@ export class DocApi {
     });
     return res?.data;
   }
+
+  async getRecentEditDocs() {
+    const res: any = await request({
+      url: '/api/recent/list',
+      config: {
+        method: 'GET',
+        data: {
+          offset: 0,
+          limit: 100,
+          action: 'Edit',
+          type: 'Doc',
+        },
+      },
+    });
+
+    return res?.data?.list;
+  }
 }

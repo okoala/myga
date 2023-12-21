@@ -3,7 +3,7 @@ import { useQuickMenu } from './use-quick-menu';
 import { QuickMenus } from './quick-menus';
 
 export const QuickMenuMain: React.FC<any> = () => {
-  const { showMenus, position } = useQuickMenu();
+  const { recentId, showMenus, position } = useQuickMenu();
   return (
     <>
       {showMenus && (
@@ -15,7 +15,7 @@ export const QuickMenuMain: React.FC<any> = () => {
             zIndex: 1000,
           }}
         >
-          <QuickMenus />
+          <QuickMenus recentId={recentId} />
         </div>
       )}
     </>

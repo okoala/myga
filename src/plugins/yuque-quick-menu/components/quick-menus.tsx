@@ -6,7 +6,7 @@ import SheetIcon from '@assets/icons/sheet.svg?react';
 import BoardIcon from '@assets/icons/board.svg?react';
 import TableIcon from '@assets/icons/table.svg?react';
 
-import { useMemo } from 'react';
+import { useEffect, useMemo, useState } from 'react';
 import { DocService } from '../services/doc-service';
 import { DocType } from '../../yuque-biz/interfaces/i-doc';
 import { useStyles } from './quick-menus.styles';
@@ -21,7 +21,8 @@ type MenuType = {
   >;
 };
 
-export function QuickMenus() {
+export function QuickMenus(props) {
+  const [recentId, setRecentId] = useState(props.recentId);
   const { styles } = useStyles();
   const menus: MenuType[] = [
     {
@@ -46,6 +47,10 @@ export function QuickMenus() {
     },
   ];
 
+  useEffect(() => {
+    setRecentId(props.recentId);
+  }, [props.recentId]);
+
   const docService = useMemo(() => {
     return new DocService();
   }, []);
@@ -63,7 +68,7 @@ export function QuickMenus() {
             <Menu.Item
               key={item.type}
               onClick={() => {
-                docService.createDocument(item.type);
+                docService.createDocument(item.type, recentId);
               }}
             >
               {Icon && <Icon className={styles.icon} />}

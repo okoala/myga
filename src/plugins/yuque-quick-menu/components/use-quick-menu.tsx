@@ -7,7 +7,9 @@ type MenuPosition = {
 
 export function useQuickMenu() {
   const [showMenus, setShowMenus] = useState(false);
+  // @ts-ignore
   const [position, setPosition] = useState<MenuPosition>({});
+  const [recentId, setRecentId] = useState<string>();
 
   useEffect(() => {
     const onContxtMenuHandle = (e: MouseEvent) => {
@@ -18,9 +20,21 @@ export function useQuickMenu() {
       }
       setShowMenus(true);
       setPosition({
-        top: e.clientY,
-        left: e.clientX,
+        top: e.pageY,
+        left: e.pageX,
       });
+
+      const node = (e.target as HTMLElement)?.closest('tr.ant-table-row');
+      if (node) {
+        const docId = node.getAttribute('data-row-key');
+        if (docId) {
+          setRecentId(docId);
+        } else {
+          setRecentId(undefined);
+        }
+      } else {
+        setRecentId(undefined);
+      }
     };
 
     const onClickHandle = e => {
@@ -29,13 +43,21 @@ export function useQuickMenu() {
       }
     };
 
+    const onEscHandle = (e: KeyboardEvent) => {
+      if (e.key === 'Escape') {
+        setShowMenus(false);
+      }
+    };
+
     document.addEventListener('click', onClickHandle);
+    document.addEventListener('keydown', onEscHandle);
     document.addEventListener('contextmenu', onContxtMenuHandle);
     return () => {
       document.removeEventListener('click', onClickHandle);
+      document.removeEventListener('keydown', onEscHandle);
       document.removeEventListener('contextmenu', onContxtMenuHandle);
     };
   }, []);
 
-  return { showMenus, position };
+  return { recentId, showMenus, position };
 }
