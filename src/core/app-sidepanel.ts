@@ -1,7 +1,7 @@
 import { Configuration } from '@core/configuration';
 import { IApp, IAppConfig } from './interfaces/i-app';
 import { SidepanelPluginManager } from './sidepanel/sidepanel-manager';
-import { IPlugin } from './interfaces/i-plugin';
+import { IAppSidepanelPlugin } from './interfaces/i-plugin';
 
 export class AppSidepanel implements IApp {
   static init(config: IAppConfig) {
@@ -18,13 +18,9 @@ export class AppSidepanel implements IApp {
     this.configuration = new Configuration();
     this.pluginMananger = new SidepanelPluginManager();
 
-    const pluginInstances: IPlugin[] = [];
+    const pluginInstances: IAppSidepanelPlugin[] = [];
     for (const Plugin of config.plugins) {
       const plugin = new Plugin();
-      // 自定义配置
-      if (plugin.registerConfiguraion) {
-        plugin.registerConfiguraion.call(plugin, this.configuration);
-      }
       pluginInstances.push(plugin);
     }
 

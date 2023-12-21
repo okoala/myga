@@ -31,6 +31,11 @@ export type BackgroundMessagerRegistyOption = {
   handler: (...args: any[]) => Promise<any>;
 };
 
+export type BackgroundActionRegistryOption = {
+  name: string;
+  handler: (...args: any[]) => Promise<any>;
+};
+
 export type ContentMessagerRegistyOption = {
   name: string;
   handler: (...args: any[]) => Promise<any>;
@@ -50,6 +55,10 @@ export interface IPlugin {
 export interface IAppBackgroundPlugin extends IPlugin {
   // 注册 background 消息
   registerBackgroundMessager?(): BackgroundMessagerRegistyOption;
+  // 注册 background action 时间
+  registerBackgroundActionClicked?(): BackgroundActionRegistryOption;
+  // 注册 action 标题
+  init?(): void;
 }
 
 export interface IAppContentPlugin extends IPlugin {

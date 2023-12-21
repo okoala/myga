@@ -23,6 +23,7 @@ const manifest: chrome.runtime.ManifestV3 = {
     'scripting',
     'sidePanel',
   ],
+  action: {},
   options_page: optionsPage,
   background: {
     service_worker: 'src/pages/background/index.js',

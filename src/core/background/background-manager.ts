@@ -1,4 +1,7 @@
-import { BackgroundMessagerRegistyOption } from '../interfaces/i-plugin';
+import {
+  BackgroundActionRegistryOption,
+  BackgroundMessagerRegistyOption,
+} from '../interfaces/i-plugin';
 
 type MessageSender = chrome.runtime.MessageSender;
 type SendResponse = (response: any) => void;
@@ -11,12 +14,23 @@ export interface BackgroundMessage<T> {
 // 内容插件管理
 export class BackgroundManager {
   private readonly _messagers: BackgroundMessagerRegistyOption[] = [];
+  private readonly _actions: BackgroundActionRegistryOption[] = [];
 
-  registerBackgroundMessager = (messager: BackgroundMessagerRegistyOption) => {
+  registerMessager = (messager: BackgroundMessagerRegistyOption) => {
     this._messagers.push(messager);
   };
 
+  registerActionClicked = (action: BackgroundActionRegistryOption) => {
+    this._actions.push(action);
+  };
+
   start = () => {
+    chrome.action.onClicked.addListener(tab => {
+      for (const action of this._actions) {
+        action.handler(tab);
+      }
+    });
+
     // 不能用 async，不然成功返回信息
     chrome.runtime.onMessage.addListener(
       (

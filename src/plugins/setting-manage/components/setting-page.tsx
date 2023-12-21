@@ -1,4 +1,4 @@
-import React, { useLayoutEffect, useMemo } from 'react';
+import { useLayoutEffect, useMemo } from 'react';
 import './setting-page.less';
 import { Anchor } from 'antd';
 import { IPluginProps } from '@core';

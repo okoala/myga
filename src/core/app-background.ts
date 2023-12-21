@@ -1,6 +1,6 @@
 import { Configuration } from '@core/configuration';
 import { IAppConfig } from './interfaces/i-app';
-import { IPlugin } from './interfaces/i-plugin';
+import { IAppBackgroundPlugin } from './interfaces/i-plugin';
 import { BackgroundManager } from '@core/background/background-manager';
 
 export class AppBackground {
@@ -18,13 +18,9 @@ export class AppBackground {
     this.configuration = new Configuration();
     this.backgroundPluginMananger = new BackgroundManager();
 
-    const pluginInstances: IPlugin[] = [];
+    const pluginInstances: IAppBackgroundPlugin[] = [];
     for (const Plugin of config.plugins) {
       const plugin = new Plugin();
-      // 自定义配置
-      if (plugin.registerConfiguraion) {
-        plugin.registerConfiguraion.call(plugin, this.configuration);
-      }
       pluginInstances.push(plugin);
     }
 
@@ -40,10 +36,22 @@ export class AppBackground {
         }
         if (!isMatch) continue;
       }
+
+      if (pluginInstance.init) {
+        pluginInstance.init();
+      }
+
       if (pluginInstance.registerBackgroundMessager) {
-        this.backgroundPluginMananger?.registerBackgroundMessager.call(
+        this.backgroundPluginMananger?.registerMessager.call(
           pluginInstance,
           pluginInstance.registerBackgroundMessager(),
+          // this.configuration,
+        );
+      }
+      if (pluginInstance.registerBackgroundActionClicked) {
+        this.backgroundPluginMananger?.registerActionClicked.call(
+          pluginInstance,
+          pluginInstance.registerBackgroundActionClicked(),
           // this.configuration,
         );
       }

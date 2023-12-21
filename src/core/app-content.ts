@@ -1,6 +1,6 @@
 import { Configuration } from '@core/configuration';
 import { IAppConfig } from './interfaces/i-app';
-import { IPlugin } from './interfaces/i-plugin';
+import { IAppContentPlugin } from './interfaces/i-plugin';
 import { ContentPluginManager } from './content/content-manager';
 
 export class AppContent {
@@ -18,13 +18,9 @@ export class AppContent {
     this.configuration = new Configuration();
     this.contentPluginMananger = new ContentPluginManager();
 
-    const pluginInstances: IPlugin[] = [];
+    const pluginInstances: IAppContentPlugin[] = [];
     for (const Plugin of config.plugins) {
       const plugin = new Plugin();
-      // 自定义配置
-      if (plugin.registerConfiguraion) {
-        plugin.registerConfiguraion.call(plugin, this.configuration);
-      }
       pluginInstances.push(plugin);
     }
 
