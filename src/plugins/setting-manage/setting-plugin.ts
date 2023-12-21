@@ -1,7 +1,7 @@
-import { IPlugin } from '@core';
+import { IAppSettingPlugin } from '@core';
 import { SettingPage } from '.';
 
-export class SettingManagePlugin implements IPlugin {
+export class SettingManagePlugin implements IAppSettingPlugin {
   pluginId = 'setting-manager';
   pluginName = '插件配置';
   pluginDesc = '插件管理页面';

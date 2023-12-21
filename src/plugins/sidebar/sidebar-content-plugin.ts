@@ -1,7 +1,7 @@
 import {
   ContentMessagerRegistyOption,
   ContentRegistyOption,
-  IPlugin,
+  IAppContentPlugin,
 } from '@core';
 import { SidebarEntry } from './components/sidebar-entry';
 import {
@@ -12,7 +12,7 @@ import {
 } from './constants';
 import { sidebarIframeService } from './services/sidebar-iframe-service';
 
-export class SidebarContentPlugin implements IPlugin {
+export class SidebarContentPlugin implements IAppContentPlugin {
   readonly pluginId = pluginId;
   readonly pluginName = pluginName;
   readonly pluginDesc = pluginDesc;

@@ -45,22 +45,34 @@ export interface IPlugin {
   pluginDesc?: string;
   // 插件有效的 urls
   pluginUrls?: string[];
+}
+
+export interface IAppBackgroundPlugin extends IPlugin {
+  // 注册 background 消息
+  registerBackgroundMessager?(): BackgroundMessagerRegistyOption;
+}
+
+export interface IAppContentPlugin extends IPlugin {
   // 注册配置信息
   registerConfiguraion?(configuration: Configuration): void;
-  // 注册设置渲染
-  registerSettingRender?(): SettingRegistyOption;
   // 注册内容渲染
   registerContentRender?(): ContentRegistyOption;
+  // 注册 content 消息
+  registerContentMessager?(): ContentMessagerRegistyOption;
+}
+
+export interface IAppSettingPlugin extends IPlugin {
+  // 注册设置渲染
+  registerSettingRender?(): SettingRegistyOption;
+}
+
+export interface IAppSidepanelPlugin extends IPlugin {
   // 注册侧边栏渲染
   registerSidepanelRender?(): SidepanelRenderRegistyOption;
   // 注册侧边栏渲染
   registerSidepanelItem?(): SidepanelItemRegistyOption;
   // 注册侧边栏渲染
   registerSidepanelFooterItem?(): SidepanelFooterItemRegistyOption;
-  // 注册 background 消息
-  registerBackgroundMessager?(): BackgroundMessagerRegistyOption;
-  // 注册 content 消息
-  registerContentMessager?(): ContentMessagerRegistyOption;
 }
 
 export interface IPluginCtor {
