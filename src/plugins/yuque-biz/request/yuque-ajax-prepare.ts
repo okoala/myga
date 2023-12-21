@@ -1,9 +1,6 @@
 import { getCurrentTabUrl } from '@lib/hosts/tabs';
-import {
-  YUQUE_CSRF_COOKIE_NAME,
-  CSRF_HEADER_NAME,
-} from '../../yuque-biz/config';
-import { getYuqueDomain } from '../../yuque-biz/yuque-path';
+import { YUQUE_CSRF_COOKIE_NAME, CSRF_HEADER_NAME } from '../constants';
+import { getYuqueDomain } from '../yuque-path';
 
 export class CsrfTokenError extends Error {
   constructor(message: any) {

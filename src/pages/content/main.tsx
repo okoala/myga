@@ -6,6 +6,7 @@ import { TranslateYoutubeContentPlugin } from '@plugins/youtube-translate/transl
 // import { SidebarContentPlugin } from '@plugins/sidebar/sidebar-content-plugin';
 import { ThemeProvider } from '@plugins/theme/theme-provider';
 import { YuqueBeautifyContentPlugin } from '@plugins/yuque-beautify/yuque-beautify-content-plugin';
+import { YuqueBizContentPlugin } from '@plugins/yuque-biz/yuque-biz-content-plugin';
 
 refreshOnUpdate('core');
 refreshOnUpdate('plugins');
@@ -25,6 +26,7 @@ shadowRoot.appendChild(rootIntoShadow);
 const app = AppContent.init({
   plugins: [
     // SidebarContentPlugin,
+    YuqueBizContentPlugin,
     QuickMenuContentPlugin,
     TranslateYoutubeContentPlugin,
     YuqueBeautifyContentPlugin,

@@ -36,6 +36,11 @@ export class AppContent {
         }
         if (!isMatch) continue;
       }
+
+      if (pluginInstance.init) {
+        pluginInstance.init();
+      }
+
       if (pluginInstance.registerContentRender) {
         this.contentPluginMananger?.registerRender.call(
           pluginInstance,
@@ -43,6 +48,7 @@ export class AppContent {
           this.configuration,
         );
       }
+
       if (pluginInstance.registerContentMessager) {
         this.contentPluginMananger?.registerMessager.call(
           pluginInstance,

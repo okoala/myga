@@ -26,6 +26,12 @@
     background: var(--yq-yuque-grey-300);
   }
 
+  .ne-toc-normal-view .ne-toc-pin,
+  .ne-toc-view .ne-toc-pin .ne-toc-pin-text {
+    color: var(--yq-yuque-grey-700);
+    transition: all 0.5s ease;
+  }
+
   .ne-toc-normal-view .ne-toc-item .ne-toc-fold-btn,
   .ne-toc-normal-view .ne-toc-item a {
     color: var(--yq-yuque-grey-600);
@@ -33,10 +39,16 @@
   }
 
   .ne-toc-normal-view .ne-toc-item.ne-toc-selected a {
-    color: var(--yq-yuque-grey-800);
+    color: var(--yq-yuque-grey-900);
   }
 
   .ne-toc-normal-view:hover {
+    .ne-toc-pin,
+    .ne-toc-pin .ne-toc-pin-text,
+    .ne-toc-item.ne-toc-selected a {
+      color: var(--yq-yuque-grey-900);
+    }
+
     .ne-toc-item .ne-toc-fold-btn,
     .ne-toc-item a {
       color: var(--yq-yuque-grey-800);

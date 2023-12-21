@@ -1,4 +1,4 @@
-import { request } from '@plugins/yuque-request';
+import { request } from '../request/request-proxy';
 import { detectLanguage } from '@lib/hosts/i18n';
 
 export class TranslateApi {

@@ -1,8 +1,14 @@
 import { MapT } from '../interfaces/i-yuque-request';
 import { storage } from '@lib/hosts/storage';
 import { backgrondRequestEventName } from '../constants';
+import { yuqueDomain } from '../yuque-domain';
 
 export function proxyRequest(data: MapT<any>) {
+  const domain = yuqueDomain.getDomain();
+  if (domain) {
+    data.config.baseURL = domain;
+  }
+
   return new Promise(async (resolve, reject) => {
     chrome.runtime.sendMessage(
       {

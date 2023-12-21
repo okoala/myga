@@ -62,6 +62,7 @@ export interface IAppBackgroundPlugin extends IPlugin {
 }
 
 export interface IAppContentPlugin extends IPlugin {
+  init?(): void;
   // 注册配置信息
   registerConfiguraion?(configuration: Configuration): void;
   // 注册内容渲染

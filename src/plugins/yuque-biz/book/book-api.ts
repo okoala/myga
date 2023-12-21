@@ -1,4 +1,4 @@
-import { request } from '@plugins/yuque-request';
+import { request } from '../request/request-proxy';
 import { getDefaultBookSlug } from '../util';
 
 export type BookCreateParams = {

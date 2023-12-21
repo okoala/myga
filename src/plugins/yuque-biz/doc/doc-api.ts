@@ -1,4 +1,4 @@
-import { request } from '@plugins/yuque-request';
+import { request } from '../request/request-proxy';
 import { getDefaultDocSlug, getDefaultTitle, getDocFormat } from '../util';
 import { DocType } from '../interfaces/i-doc';
 

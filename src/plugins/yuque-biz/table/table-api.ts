@@ -1,4 +1,4 @@
-import { request } from '@plugins/yuque-request';
+import { request } from '../request/request-proxy';
 
 export class TableApi {
   async getRecords(docId: number, sheetId: string) {

@@ -1,5 +1,5 @@
 import { IAppBackgroundPlugin } from '@core';
-import { ajax } from './services/request-runtime';
+import { ajax } from './request/request-runtime';
 import {
   pluginId,
   pluginName,
@@ -7,7 +7,7 @@ import {
   backgrondRequestEventName,
 } from './constants';
 
-export class YuqueRequestBackgroundPlugin implements IAppBackgroundPlugin {
+export class YuqueBizBackgroundPlugin implements IAppBackgroundPlugin {
   readonly pluginId = pluginId;
   readonly pluginName = pluginName;
   readonly pluginDesc = pluginDesc;
