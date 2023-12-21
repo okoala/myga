@@ -1,6 +1,30 @@
-#doc-reader-content #article-title {
+#doc-reader-content #article-title,
+#comment-floor-mini,
+.ne-toc-view {
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Noto Sans',
     Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji' !important;
+  font-weight: 400;
+  -webkit-font-smoothing: subpixel-antialiased;
+  line-height: 1.5;
+  overflow-wrap: break-word;
+  word-wrap: break-word;
+  hyphens: auto;
+  letter-spacing: 0.02em;
+}
+
+#doc-reader-content #article-title {
+  font-size: 2.2em;
+}
+
+#sidePanel {
+  .ne-toc-normal-view .ne-toc-content::after {
+    width: 1px;
+    background: var(--yq-yuque-grey-300);
+  }
+
+  .ne-toc-normal-view .ne-toc-item a {
+    color: var(--yq-yuque-grey-700);
+  }
 }
 
 // 评论编辑器
@@ -154,7 +178,7 @@
   .ne-codeblock[theme='Github Light'] .ne-codeblock-inner,
   .ͼl.cm-editor,
   .ͼl .cm-gutters {
-    background-color: #fafafa !important;
+    background-color: var(--yq-yuque-grey-200) !important;
   }
 
   ne-alert {
