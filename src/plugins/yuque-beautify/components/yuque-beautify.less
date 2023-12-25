@@ -17,8 +17,12 @@
 }
 
 #sidePanel {
+  .ne-toc-normal-view .ne-toc-item .ne-toc-item-text:hover,
   .ne-toc-normal-view .ne-toc-item.ne-toc-selected {
-    font-weight: 500;
+    font-weight: 400;
+    a {
+      color: var(--yq-yuque-grey-900);
+    }
   }
 
   .ne-toc-normal-view .ne-toc-content::after {
@@ -51,7 +55,7 @@
 
     .ne-toc-item .ne-toc-fold-btn,
     .ne-toc-item a {
-      color: var(--yq-yuque-grey-800);
+      color: var(--yq-yuque-grey-700);
     }
   }
 }
@@ -146,6 +150,10 @@
     box-sizing: content-box;
     overflow: visible;
     padding: 0 !important;
+  }
+
+  .ne-viewer ne-card[data-card-name='hr'] .ne-hr {
+    height: 1px;
   }
 
   ne-uli-i .ne-list-symbol > span {
