@@ -1,10 +1,13 @@
+body,
+html {
+  letter-spacing: 0.02em;
+  -webkit-font-smoothing: subpixel-antialiased;
+}
+
 #doc-reader-content #article-title,
 #comment-floor-mini,
 .ne-toc-view {
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Noto Sans',
-    Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji' !important;
   font-weight: 400;
-  -webkit-font-smoothing: subpixel-antialiased;
   line-height: 1.5;
   overflow-wrap: break-word;
   word-wrap: break-word;
@@ -71,10 +74,7 @@
   .ne-viewer.ne-paragraph-spacing-relax.ne-typography-classic .ne-viewer-body,
   .ne-viewer-body,
   .ne-editor-body {
-    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Noto Sans',
-      Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji' !important;
     font-weight: 400;
-    -webkit-font-smoothing: subpixel-antialiased;
     line-height: 1.5;
     overflow-wrap: break-word;
     word-wrap: break-word;
@@ -211,8 +211,23 @@
   .ne-codeblock[theme='Github Light'] .ne-codeblock-content,
   .ne-codeblock[theme='Github Light'] .ne-codeblock-inner,
   .ͼl.cm-editor,
-  .ͼl .cm-gutters {
-    background-color: var(--yq-yuque-grey-200) !important;
+  .cm-gutters {
+    caret-color: transparent !important;
+    color: var(--yq-yuque-grey-400) !important;
+  }
+
+  .cm-lightLineGutter {
+    background-color: transparent !important;
+  }
+
+  .cm-foldGutter {
+    visibility: hidden;
+  }
+
+  .cm-gutters:hover {
+    .cm-foldGutter {
+      visibility: visible;
+    }
   }
 
   ne-alert {
@@ -259,5 +274,10 @@
     ne-p:last-child {
       margin-bottom: 0 !important;
     }
+  }
+
+  ne-card[data-card-type='block'] {
+    border-radius: 8px !important;
+    overflow: hidden;
   }
 }
