@@ -49,7 +49,7 @@ export interface IPlugin {
   // 插件描述
   pluginDesc?: string;
   // 插件有效的 urls
-  pluginUrls?: string[];
+  pluginUrls?: (string | RegExp)[];
 }
 
 export interface IAppBackgroundPlugin extends IPlugin {

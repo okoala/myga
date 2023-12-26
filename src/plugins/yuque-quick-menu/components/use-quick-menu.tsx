@@ -13,11 +13,13 @@ export function useQuickMenu() {
 
   useEffect(() => {
     const onContxtMenuHandle = e => {
+      if (!e.target.closest('[data-testid="dashboard-index"]')) return;
       // 当按下 ctrl 或 meta 键时，触发默认事件
       if (!(e.metaKey || e.ctrlKey)) {
         e.preventDefault();
         e.stopPropagation();
       }
+
       setShowMenus(true);
       setPosition({
         top: e.pageY,
@@ -51,15 +53,11 @@ export function useQuickMenu() {
 
     document.addEventListener('click', onClickHandle);
     document.addEventListener('keydown', onEscHandle);
-    document
-      .querySelector('[data-testid="dashboard-index"]')
-      ?.addEventListener('contextmenu', onContxtMenuHandle);
+    document.addEventListener('contextmenu', onContxtMenuHandle);
     return () => {
       document.removeEventListener('click', onClickHandle);
       document.removeEventListener('keydown', onEscHandle);
-      document
-        .querySelector('[data-testid="dashboard-index"]')
-        ?.removeEventListener('contextmenu', onContxtMenuHandle);
+      document.removeEventListener('contextmenu', onContxtMenuHandle);
     };
   }, []);
 
