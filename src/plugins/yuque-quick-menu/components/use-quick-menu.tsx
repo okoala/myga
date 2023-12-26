@@ -12,7 +12,7 @@ export function useQuickMenu() {
   const [recentId, setRecentId] = useState<string>();
 
   useEffect(() => {
-    const onContxtMenuHandle = (e: MouseEvent) => {
+    const onContxtMenuHandle = e => {
       // 当按下 ctrl 或 meta 键时，触发默认事件
       if (!(e.metaKey || e.ctrlKey)) {
         e.preventDefault();
@@ -51,11 +51,15 @@ export function useQuickMenu() {
 
     document.addEventListener('click', onClickHandle);
     document.addEventListener('keydown', onEscHandle);
-    document.addEventListener('contextmenu', onContxtMenuHandle);
+    document
+      .querySelector('[data-testid="dashboard-index"]')
+      ?.addEventListener('contextmenu', onContxtMenuHandle);
     return () => {
       document.removeEventListener('click', onClickHandle);
       document.removeEventListener('keydown', onEscHandle);
-      document.removeEventListener('contextmenu', onContxtMenuHandle);
+      document
+        .querySelector('[data-testid="dashboard-index"]')
+        ?.removeEventListener('contextmenu', onContxtMenuHandle);
     };
   }, []);
 
