@@ -2,6 +2,7 @@ import { Configuration } from '@core/configuration';
 import { IApp, IAppConfig } from './interfaces/i-app';
 import { SettingPluginManager } from './setting/setting-manager';
 import { IAppSettingPlugin, IPlugin } from './interfaces/i-plugin';
+import { isMatchUrls } from './util';
 
 export class AppSetting implements IApp {
   static init(config: IAppConfig) {
@@ -25,6 +26,15 @@ export class AppSetting implements IApp {
     }
 
     for (const pluginInstance of pluginInstances) {
+      if (pluginInstance.pluginUrls) {
+        const isMatch = isMatchUrls(pluginInstance.pluginUrls);
+        if (!isMatch) continue;
+      }
+
+      if (pluginInstance.init) {
+        pluginInstance.init();
+      }
+
       // 自定义配置渲染页
       if (pluginInstance.registerSettingRender) {
         this.settingPluginMananger?.registerRender.call(

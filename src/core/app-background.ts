@@ -2,6 +2,7 @@ import { Configuration } from '@core/configuration';
 import { IAppConfig } from './interfaces/i-app';
 import { IAppBackgroundPlugin } from './interfaces/i-plugin';
 import { BackgroundManager } from '@core/background/background-manager';
+import { isMatchUrls } from './util';
 
 export class AppBackground {
   static init(config: IAppConfig) {
@@ -26,15 +27,10 @@ export class AppBackground {
 
     for (const pluginInstance of pluginInstances) {
       if (pluginInstance.pluginUrls) {
-        let isMatch = false;
-        for (const urlPattern of pluginInstance.pluginUrls) {
-          const pattern = new globalThis.URLPattern(urlPattern);
-          if (pattern.test(document.location.href)) {
-            isMatch = true;
-            break;
-          }
+        if (pluginInstance.pluginUrls) {
+          const isMatch = isMatchUrls(pluginInstance.pluginUrls);
+          if (!isMatch) continue;
         }
-        if (!isMatch) continue;
       }
 
       if (pluginInstance.init) {

@@ -2,6 +2,7 @@ import { Configuration } from '@core/configuration';
 import { IAppConfig } from './interfaces/i-app';
 import { IAppContentPlugin } from './interfaces/i-plugin';
 import { ContentPluginManager } from './content/content-manager';
+import { isMatchUrls } from './util';
 
 export class AppContent {
   static init(config: IAppConfig) {
@@ -26,14 +27,7 @@ export class AppContent {
 
     for (const pluginInstance of pluginInstances) {
       if (pluginInstance.pluginUrls) {
-        let isMatch = false;
-        for (const urlPattern of pluginInstance.pluginUrls) {
-          const pattern = new globalThis.URLPattern(urlPattern);
-          if (pattern.test(document.location.href)) {
-            isMatch = true;
-            break;
-          }
-        }
+        const isMatch = isMatchUrls(pluginInstance.pluginUrls);
         if (!isMatch) continue;
       }
 

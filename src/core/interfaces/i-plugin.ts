@@ -72,11 +72,13 @@ export interface IAppContentPlugin extends IPlugin {
 }
 
 export interface IAppSettingPlugin extends IPlugin {
+  init?(): void;
   // 注册设置渲染
   registerSettingRender?(): SettingRegistyOption;
 }
 
 export interface IAppSidepanelPlugin extends IPlugin {
+  init?(): void;
   // 注册侧边栏渲染
   registerSidepanelRender?(): SidepanelRenderRegistyOption;
   // 注册侧边栏渲染
