@@ -63,6 +63,20 @@ html {
   }
 }
 
+div[class*='index-module_recentTable_'] {
+  .ant-table-tbody > tr > .ant-table-cell,
+  .ant-table tfoot > tr > .ant-table-cell {
+    padding: 8px 1px;
+  }
+
+  td[class*='index-module_columnsTime_'],
+  div[class*='index-module_belongCol_'],
+  a[class*='index-module_bookTitle_'],
+  a[class*='index-module_groupTitle_'] {
+    color: var(--yq-text-disable);
+  }
+}
+
 // 评论编辑器
 #lark-mini-editor,
 // 评论
