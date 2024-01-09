@@ -77,6 +77,29 @@ div[class*='index-module_recentTable_'] {
   }
 }
 
+div[class*='ReaderLayout-module_asideHead_'] {
+  border: none;
+  padding: 0;
+  flex-direction: column-reverse;
+
+  &:hover {
+    div[class*='ReaderLayout-module_crumb_'] {
+      opacity: 1;
+    }
+  }
+}
+
+div[class*='ReaderLayout-module_bookName_'] {
+  margin: 8px 0;
+}
+
+div[class*='ReaderLayout-module_crumb_'] {
+  padding: 0 0 0 6px;
+  height: 0;
+  opacity: 0;
+  transition: all 0.3s ease;
+}
+
 // 评论编辑器
 #lark-mini-editor,
 // 评论
