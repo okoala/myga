@@ -36,6 +36,28 @@ export type BackgroundActionRegistryOption = {
   handler: (...args: any[]) => Promise<any>;
 };
 
+type ContextType =
+  | 'all'
+  | 'page'
+  | 'frame'
+  | 'selection'
+  | 'link'
+  | 'editable'
+  | 'image'
+  | 'video'
+  | 'audio'
+  | 'launcher'
+  | 'browser_action'
+  | 'page_action'
+  | 'action';
+
+export type BackgroundContextMenuRegistryOption = {
+  name: string;
+  get title(): string;
+  contexts: ContextType[];
+  handler: (...args: any[]) => Promise<any>;
+};
+
 export type ContentMessagerRegistyOption = {
   name: string;
   handler: (...args: any[]) => Promise<any>;
@@ -57,6 +79,8 @@ export interface IAppBackgroundPlugin extends IPlugin {
   registerBackgroundMessager?(): BackgroundMessagerRegistyOption;
   // 注册 background action 时间
   registerBackgroundActionClicked?(): BackgroundActionRegistryOption;
+  // 注册 background contextMenus clicked
+  registerBackgroundContextMenusClicked?(): BackgroundContextMenuRegistryOption;
   // 注册 action 标题
   init?(): void;
 }

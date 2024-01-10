@@ -48,7 +48,12 @@ export class AppBackground {
         this.backgroundPluginMananger?.registerActionClicked.call(
           pluginInstance,
           pluginInstance.registerBackgroundActionClicked(),
-          // this.configuration,
+        );
+      }
+      if (pluginInstance.registerBackgroundContextMenusClicked) {
+        this.backgroundPluginMananger?.registerContextMenusClicked.call(
+          pluginInstance,
+          pluginInstance.registerBackgroundContextMenusClicked(),
         );
       }
     }

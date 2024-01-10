@@ -1,6 +1,7 @@
 import {
   BackgroundActionRegistryOption,
   BackgroundMessagerRegistyOption,
+  BackgroundContextMenuRegistryOption,
 } from '../interfaces/i-plugin';
 
 type MessageSender = chrome.runtime.MessageSender;
@@ -15,6 +16,7 @@ export interface BackgroundMessage<T> {
 export class BackgroundManager {
   private readonly _messagers: BackgroundMessagerRegistyOption[] = [];
   private readonly _actions: BackgroundActionRegistryOption[] = [];
+  private readonly _contextMenus: BackgroundContextMenuRegistryOption[] = [];
 
   registerMessager = (messager: BackgroundMessagerRegistyOption) => {
     this._messagers.push(messager);
@@ -24,10 +26,30 @@ export class BackgroundManager {
     this._actions.push(action);
   };
 
+  registerContextMenusClicked = (
+    contextMenu: BackgroundContextMenuRegistryOption,
+  ) => {
+    this._contextMenus.push(contextMenu);
+  };
+
   start = () => {
     chrome.action.onClicked.addListener(tab => {
       for (const action of this._actions) {
         action.handler(tab);
+      }
+    });
+
+    for (const contextMenu of this._contextMenus) {
+      chrome.contextMenus.create({
+        id: contextMenu.name,
+        title: contextMenu.title,
+        contexts: contextMenu.contexts,
+      });
+    }
+
+    chrome.contextMenus.onClicked.addListener((info, tab) => {
+      for (const contextMenu of this._contextMenus) {
+        contextMenu.handler(info, tab);
       }
     });
 

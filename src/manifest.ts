@@ -30,6 +30,9 @@ const manifest: chrome.runtime.ManifestV3 = {
     type: 'module',
   },
   icons: {
+    16: 'okrrr-16.png',
+    32: 'okrrr-32.png',
+    48: 'okrrr-48.png',
     128: 'okrrr-128.png',
   },
   host_permissions: ['<all_urls>', '*://*/*'],
