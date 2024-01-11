@@ -1,4 +1,5 @@
 import { deepTranslateSerivce } from '@plugins/rapidapi';
+import { yuqueApi } from '@plugins/yuque-biz';
 import { IYoutubeComment } from '../interfaces/i-youtube';
 import { storage } from '@lib/hosts/storage';
 import { maxTranslateCacheLength, youtubeCommentCacheKey } from '../constants';
@@ -43,7 +44,12 @@ class TranslateYoutubeCommentService {
     if (!comment) return null;
     const cacheComment = this.getCacheComment(comment.id);
     if (cacheComment) return cacheComment.content;
-    const content = await deepTranslateSerivce.translate(comment.content);
+    let content;
+    try {
+      content = await deepTranslateSerivce.translate(comment.content);
+    } catch (err) {
+      content = await yuqueApi.translate.text(comment.content);
+    }
     if (content) {
       this.setCacheComment(comment.id, content);
     }
