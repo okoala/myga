@@ -4,6 +4,7 @@ import { MineSidepanelPlugin } from '@plugins/mine/mine-sidepanel-plugin';
 import { SidebarSidepanelPlugin } from '@plugins/sidebar/sidebar-sidepanel-plugin';
 import { ThemeSidepanelPlugin } from '@plugins/theme/theme-sidepanel-plugin';
 import { TodoSidepanelPlugin } from '@plugins/todo/todo-sidepanel-plugin';
+import { ImageSidepanelPlugin } from '@plugins/image-manage/image-sidepanel-plugin';
 
 export function AppMain() {
   const app = AppSidepanel.init({
@@ -12,6 +13,7 @@ export function AppMain() {
       TodoSidepanelPlugin,
       ThemeSidepanelPlugin,
       MineSidepanelPlugin,
+      ImageSidepanelPlugin,
     ],
   });
 

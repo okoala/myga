@@ -2,11 +2,12 @@ import {
   BackgroundContextMenuRegistryOption,
   IAppBackgroundPlugin,
 } from '@core';
+import { pluginDesc, pluginId, pluginName } from './constants';
 
 export class ImageManageBackgroundPlugin implements IAppBackgroundPlugin {
-  pluginId = 'image-manager';
-  pluginName = '图片管理';
-  pluginDesc = '图片管理 (保存图片)';
+  readonly pluginId = pluginId;
+  readonly pluginName = pluginName;
+  readonly pluginDesc = pluginDesc;
 
   init() {}
 

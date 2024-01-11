@@ -3,7 +3,7 @@ import { createRoot } from 'react-dom/client';
 import refreshOnUpdate from 'virtual:reload-on-update-in-view';
 import { QuickMenuContentPlugin } from '@plugins/yuque-quick-menu/quick-menu-content-plugin';
 import { TranslateYoutubeContentPlugin } from '@plugins/youtube-translate/translate-yt-content-plugin';
-// import { SidebarContentPlugin } from '@plugins/sidebar/sidebar-content-plugin';
+import { SidebarContentPlugin } from '@plugins/sidebar/sidebar-content-plugin';
 import { ThemeProvider } from '@plugins/theme/theme-provider';
 import { YuqueBeautifyContentPlugin } from '@plugins/yuque-beautify/yuque-beautify-content-plugin';
 import { YuqueBizContentPlugin } from '@plugins/yuque-biz/yuque-biz-content-plugin';
@@ -25,7 +25,7 @@ shadowRoot.appendChild(rootIntoShadow);
 
 const app = AppContent.init({
   plugins: [
-    // SidebarContentPlugin,
+    SidebarContentPlugin,
     YuqueBizContentPlugin,
     QuickMenuContentPlugin,
     TranslateYoutubeContentPlugin,
