@@ -20,19 +20,34 @@ export function useLunar() {
         date.getMonth() + 1,
         date.getDate(),
       );
-      const displayHoliday =
-        h?.getTarget() === h?.getDay() ? h?.getName() : undefined;
-      const lunarText = displayHoliday || solarTerm || lunar;
+      const displayHoliday = h?.getName();
+      const isHolidayTarget = h?.getTarget() === h?.getDay();
+      const lunarText =
+        (isHolidayTarget && displayHoliday) || solarTerm || lunar;
       if (!lunarText) continue;
       if (dayCell.querySelector('.okrrr-yuque-table-lunar')) continue;
       dayCell.classList.add('okrrr-yuque-table');
+
+      const lunarEl = document.createElement('span');
+      lunarEl.className = 'okrrr-yuque-table-lunar';
+      lunarEl.textContent = lunarText;
+      dayCell.appendChild(lunarEl);
+
       if (displayHoliday) {
-        dayCell.classList.add('okrrr-yuque-table-holiday');
+        if (h.isWork()) {
+          dayCell.classList.add('okrrr-yuque-table-holiday-weeky-work');
+          const span = document.createElement('span');
+          span.className = 'okrrr-yuque-table-holiday-weeky-work-text';
+          span.textContent = '班';
+          lunarEl.appendChild(span);
+        } else {
+          dayCell.classList.add('okrrr-yuque-table-holiday');
+          const span = document.createElement('span');
+          span.className = 'okrrr-yuque-table-holiday-text';
+          span.textContent = '休';
+          lunarEl.appendChild(span);
+        }
       }
-      const span = document.createElement('span');
-      span.className = 'okrrr-yuque-table-lunar';
-      span.textContent = lunarText;
-      dayCell.appendChild(span);
     }
   }, []);
 
