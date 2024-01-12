@@ -20,6 +20,7 @@ export function useLunar() {
         date.getMonth() + 1,
         date.getDate(),
       );
+      const day = date.getDay();
       const displayHoliday = h?.getName();
       const isHolidayTarget = h?.getTarget() === h?.getDay();
       const lunarText =
@@ -27,6 +28,10 @@ export function useLunar() {
       if (!lunarText) continue;
       if (dayCell.querySelector('.okrrr-yuque-table-lunar')) continue;
       dayCell.classList.add('okrrr-yuque-table');
+
+      if (day === 6 || day === 0) {
+        dayCell.classList.add('okrrr-yuque-table-weekend');
+      }
 
       const lunarEl = document.createElement('span');
       lunarEl.className = 'okrrr-yuque-table-lunar';

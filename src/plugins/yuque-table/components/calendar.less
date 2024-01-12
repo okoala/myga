@@ -36,3 +36,23 @@
 .okrrr-yuque-table-holiday-weeky-work-text {
   background: var(--yq-yuque-grey-700);
 }
+
+.lakex-view-calendar-content-box-row-cell.okrrr-yuque-table-weekend:not(
+    .okrrr-yuque-table-holiday-weeky-work
+  ):not(.okrrr-yuque-table-holiday) {
+  .lakex-view-calendar-content-box-row-cell-date-text,
+  .okrrr-yuque-table-lunar {
+    color: var(--yq-red-7);
+  }
+
+  .lakex-view-calendar-content-box-row-cell-date[data-fade='true'] {
+    .lakex-view-calendar-content-box-row-cell-date-text,
+    .okrrr-yuque-table-lunar {
+      color: var(--yq-red-2);
+    }
+  }
+}
+
+.lakex-view-calendar-week-names-item {
+  font-weight: 400;
+}
